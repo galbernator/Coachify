@@ -57,25 +57,4 @@ $(document).ready(function() {
     offset: 72
   })
 
-  // var $window = $(window),
-  //     $changedEl1 = $('#navbar')
-  //     $changedEl2 = $('.navbar-fixed-top .navbar-toggle .icon-bar')
-  //     $changedEl3 = $('#brand img')
-  //     $triggerEl = $('#header-done'),
-  //     elTop = $triggerEl.offset().top -28;
-  //
-  // var scrollChange = function() {
-  //   $window.scroll(function() {
-  //        $changedEl1.toggleClass('color-change', $window.scrollTop() > elTop);
-  //        $changedEl2.toggleClass('color-change', $window.scrollTop() > elTop);
-  //    });
-  //  }
-  //
-  // scrollChange();
-  //
-  // $(window).resize(function() {
-  //   scrollChange();
-  //    });
-
-
 });

@@ -1,5 +1,23 @@
-<li data-message-id="<%= post.id %>">
-  <div class="col-xs-12">
-    <%= post.body %>
+<div class="col-xs-12">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 post-title">
+      <%= image_tag post.image.url, class: "blog-image" %>
+    </div>
+    <div class="col-xs-12 col-sm-8 post-body">
+      <div class="row">
+        <div class="col-xs-12">
+        <%= link_to post.title, blogpost_path(post), class: "blog-link" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <%= post.body[0..400].gsub(/\s\w+\s*$/,'... ') %>
+          <%= link_to "Read More", blogpost_path(post) %>
+          <% if post.user.id == current_user.id %>
+            <%= link_to "Edit", edit_blogpost_path(post) %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-</li>
+</div>
