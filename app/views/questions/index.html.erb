@@ -1,0 +1,8 @@
+<div class="top-div">
+
+</div>
+<div>
+  <% @questions.each do |quesiton| %>
+    <%= link_to question.text, evaluation_question_path(question) %> | <%= question.type %>
+  <% end %>
+</div>

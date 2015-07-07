@@ -1,0 +1,8 @@
+<div class="top-div">
+  <% @evaluations.each do |eval| %>
+    <%= link_to eval.title, evaluation_questions_path(eval) %>
+  <% end %>
+</div>
+<div>
+  <%= link_to "Create New Evaluation", new_evaluation_path %>
+</div>

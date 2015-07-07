@@ -1,0 +1,24 @@
+<div class="top-div">
+  <h2><%= @blogpost. title %></h2>
+  By: <%= @blogpost.user.full_name %>
+</div>
+<div>
+  <%= image_tag @blogpost.image.url %>
+</div>
+<div>
+  <p>
+    <%= @blogpost.body %>
+  </p>
+</div>
+
+<!-- add commnet to the current blogpost -->
+<div>
+  <%= render "comments/form" %>
+</div>
+
+<!-- display the comments for the current post -->
+<div id="comments">
+  <% @comments.each do |comment| %>
+    <%= render "comments/comment", comment: comment %>
+  <% end %>
+</div>

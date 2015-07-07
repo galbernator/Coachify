@@ -1,0 +1,292 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@media (min-width: 730px) {
+  #home-background {
+    background: url(main_background-lg.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+  #nav-button-sm-screen {
+    display: none;
+  }
+
+  #main-title {
+    font-size: 6.5em;
+    text-align: center;
+    padding-top: 98px;
+    color: #ff8300;
+  }
+
+  .subheader {
+    margin: 25px auto;
+    font-size: 2.4em;
+    color: #fff;
+    line-height: 36px;
+    text-align: center;
+    padding: 5px 30px;
+  }
+
+  .big-top {
+    padding: 30px 0;
+  }
+
+  .scroll-down {
+    font-size: 3em;
+    color: #ff8300;
+    text-align: center;
+    padding-top: 25px;
+  }
+
+  .navbar {
+    z-index: 10;
+  }
+
+  #blog-background {
+    background: url(shop.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+  .page-title {
+    font-size: 6.5em;
+    text-align: center;
+    padding-top: 98px;
+    padding-bottom: 48px;
+    color: #fff;
+  }
+}
+
+@media (max-width: 767px) {
+  #home-background {
+    position: relative;
+    top: -50px;
+  background-image: url(main_background-sm3.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  }
+
+  #nav-button-sm-screen {
+    display: inline-block;
+    position:fixed;
+      top: 20px;
+      right: 100px;
+    z-index: 100;
+    font-size: 1.15em;
+  }
+
+  #nav-button-sm-screen a {
+    text-decoration: none;
+    color: #333;
+  }
+
+  .navbar {
+    z-index: 10;
+    min-height: 72px;
+  }
+
+  #hamburger {
+    margin-top: 12px;
+  }
+
+  #nav-button-lg-screen {
+    display: none;
+  }
+
+  #main-title {
+    font-size: 3.8em;
+    text-align: center;
+    padding-top: 85px;
+    color: #ff8300;
+  }
+
+  .subheader {
+    margin: 30px auto;
+    font-size: 1.45em;
+    color: #fff;
+    line-height: 26px;
+    text-align: center;
+    padding: 0px 30px;
+  }
+
+  .big-top {
+    padding: 10px 0;
+  }
+
+  .scroll-down {
+    display: none;
+  }
+
+  .main-btn-margin {
+    margin-bottom: 30px;
+  }
+
+  #blog-background {
+    background: url(shop.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+  .page-title {
+    font-size: 3.8em;
+    text-align: center;
+    padding-top: 98px;
+    padding-bottom: 48px;
+    color: #fff;
+  }
+}
+
+.nav-button #nav-button {
+  border: 2px solid #ff8300;
+  line-height: 20px;
+  padding: 7px 15px;
+  border-radius: 40px;
+  margin-top: -8px;
+  font-size: 1.15em;
+  max-width: 205px;
+}
+
+.nav-button:hover #nav-button {
+  border: 2px solid #ff8300;
+  line-height: 20px;
+  padding: 7px 15px;
+  border-radius: 40px;
+  margin-top: -8px;
+  background-color: #ff8300;
+  font-size: 1.15em;
+  color: #fff;
+}
+
+.navbar a {
+  color: #fff;
+  font-size: 1.25em;
+  margin-top: 10px;
+}
+
+.navbar a:hover {
+  color: #ff8300;
+  font-size: 1.25em;
+  background-color: transparent;
+}
+.navbar a .nav-button:hover {
+  color: #fff;
+}
+
+#hamburger .icon-bar {
+    background-color: #333;
+}
+
+.navbar-fixed-top {
+  background-color: #333;
+}
+
+.white-bg {
+  background-color: #fff;
+}
+
+.top-row {
+  margin-top: 70px;
+}
+
+.menu-dropped {
+  margin-top: 370px;
+}
+
+.white-text {
+  color: #fff;
+}
+
+.CTA-button-white {
+  font-size: 1.4em;
+  padding: 20px 30px;
+  border: 2px solid #fff;
+  border-radius: 50px;
+  color: #fff;
+  line-height: 28px;
+  background-color: transparent;
+}
+.CTA-button-white:hover {
+  font-size: 1.4em;
+  padding: 20px 30px;
+  border: 2px solid #ff8300;
+  border-radius: 50px;
+  color: #fff;
+  line-height: 28px;
+  background-color: #ff8300;
+}
+
+.center {
+  display: block;
+  margin: 0px auto;
+}
+
+#brand  {
+  padding-bottom: 20px;
+}
+
+.brand-logo {
+  width: 65px;
+  margin-top: -13px;
+}
+
+.whitebg {
+  background-color: #fff;
+}
+
+.color-change {
+  color: #333;
+  background-color: #fff;
+}
+
+.color-change a {
+  color: #333;
+}
+
+.navbar-fixed-top .navbar-toggle .icon-bar.color-change {
+  background-color: #333;
+}
+
+.nav-button a:hover {
+  background-color: transparent;
+  color: inherit;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+  background-color: transparent;
+}
+
+.top-div {
+  margin-top: 90px;
+}
+
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+  background-color: transparent;
+}
+
+.dropdown-menu > li > a, .dropdown-menu > li > a:focus {
+  background-color: transparent;
+  color: #333;
+  font-size: 1em;
+  text-align: center;
+}
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+  background-color: transparent;
+  color: #ff8300;
+  font-size: 1em;
+}
+
+.navbar-pic {
+  width: 40px;
+  max-height: 45px;
+  margin-right: 8px;
+  margin-top: -7px;
+  border: 1px solid #333;
+  border-radius: 50%;
+  }

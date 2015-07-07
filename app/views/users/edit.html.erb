@@ -1,0 +1,14 @@
+<div class="top-div">
+  <%= simple_form_for @user, html: { class: "form-horizontal"} do |f| %>
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :email %>
+    <%= f.input :avatar %>
+    <p>To save your changes, please confirm your password.</p>
+    <%= f.input :current_password %>
+    <p>If you want to change your password, enter and confirm it below, otherwise, leave these fields blank.</p>
+    <%= f.input :password %>
+    <%= f.input :password_confirmation %>
+    <%= f.submit "Update Profile" %>
+  <% end %>
+</div>

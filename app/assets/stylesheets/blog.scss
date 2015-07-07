@@ -1,0 +1,42 @@
+// Place all the styles related to the blog controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.blog-topics {
+  text-align: center;
+  font-size: 1.1em;
+  font-family: monospace;
+  padding: 10px auto;
+  border-bottom: 2px solid #ff8300;
+  border-top: 2px solid #ff8300;
+  background-color: #fff;
+  width: 100%;
+}
+
+.topic {
+  margin-top: 8px;
+  padding-bottom: 8px;
+  display: inline-block;
+}
+
+.blog-image {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  float: left;
+  margin-top: 15px;
+}
+
+.blog-link {
+  display: block;
+  font-size: 1.2em;
+  color: #333;
+  margin-top: 15px;
+}
+
+#blog-topics.sticky {
+   position: fixed;
+   top: 72px;
+   width: 100%;
+   background-color: #fff;
+   z-index: 1;
+}

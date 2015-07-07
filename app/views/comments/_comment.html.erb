@@ -1,0 +1,5 @@
+<p class="well-lg" id="<%= dom_id(comment) %>">
+  <%= comment.body %> |
+  <%= link_to "Delete", blogpost_comment_path(@blogpost, comment), method: :delete,
+                data:  {confirm: "Are you sure you want to delete the answer?"}, remote: true  %>
+</p>

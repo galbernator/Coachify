@@ -1,0 +1,12 @@
+<div class="top-div">
+  <%= simple_form_for@company, html: {class: "form-horizontal"}) do |f| %>
+    <%= f.input :name, label: "Company Name", readonly: true %>
+    <%= f.input :email %>
+    <%= f.input :phone_number %>
+    <%= f.input :address %>
+    <p>Primary Contact</p>
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.submit %>
+  <% end %>
+</div>

@@ -1,0 +1,6 @@
+<div class="top-div">
+  <% @blogposts.each do |blog| %>
+    <%= link_to blog.title, blogpost_path(blog) %>
+    Posted by: <%= blog.user.full_name %> on <%= blog.created_at.strftime("%e %B, %Y") %>
+  <% end %>
+</div>

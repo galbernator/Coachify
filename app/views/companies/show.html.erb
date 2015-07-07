@@ -1,0 +1,17 @@
+<div class="top-div">
+  <div>
+    <%= @company.name %>
+  </div>
+  <div>
+    <%= link_to "Evaluation Surveys", evaluations_path %>
+  </div>
+  <div>
+    <%= link_to "Create New Evaluation", evaluations_path %>
+  </div>
+  <div>
+    <%= link_to "Edit Company Info", edit_companies_path(@company) %>
+  </div>
+  <div>
+    <%= link_to "Delete Company", company_path(@company), method: :delete, data: {confirm: "Are you sure you want to delete this company from the database?"} %>
+  </div>
+</div>

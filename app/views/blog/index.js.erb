@@ -1,0 +1,11 @@
+;(function () {
+
+var postList = $('#nav-trigger');
+postList.html('');
+
+<% @blogs.each do |post| %>
+  var html = "<%= j render partial: 'post', locals: { post: post } %>";
+  postList.append(html);
+<% end %>
+
+}());

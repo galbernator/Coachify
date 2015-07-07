@@ -1,0 +1,9 @@
+<div class="top-div">
+  <%= @user.first_name %> <%= @user.last_name %>
+</div>
+<div>
+  <%= @user.email %>
+</div>
+<div>
+  <%= image_tag(@user.avatar.url, class: "profile-image") %>
+</div>
