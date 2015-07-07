@@ -18,7 +18,7 @@ $(document).ready(function() {
   var scrollDown = function() {
     $('#brand img').attr('src', '/assets/logo-white.png');
     $('.navbar').removeClass('animated fadeInUp');
-    $('#nav-button-sm-screen').removeClass('animated fadeInUp');
+    $('#nav-button-sm-screen').removeClass('fadeInUp');
     $('.navbar').addClass('animated fadeInDown');
     $('#nav-button-sm-screen').addClass('animated fadeInDown');
   };

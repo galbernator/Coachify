@@ -11,11 +11,13 @@
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <%= post.body[0..400].gsub(/\s\w+\s*$/,'... ') %>
-          <%= link_to "Read More", blogpost_path(post) %>
-          <% if post.user.id == current_user.id %>
-            <%= link_to "Edit", edit_blogpost_path(post) %>
-          <% end %>
+          <p class="blog-preview">
+            <%= post.body[0..400].gsub(/\s\w+\s*$/,'... ') %>
+            <%= link_to "Read&nbsp;More".html_safe, blogpost_path(post) %>
+            <% if post.user.id == current_user.id %>
+              <%= link_to "Edit", edit_blogpost_path(post) %>
+            <% end %>
+          </p>
         </div>
       </div>
     </div>

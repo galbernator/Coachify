@@ -2,11 +2,25 @@ $(document).ready(function() {
 
   var search = function() {
     var searchTerm = $('#search-form').val();
-    $.get('/blog.js?query=' + searchTerm);
+    console.log(searchTerm);
+    $.get('/blog.js?query='+searchTerm);
   };
 
-  var blah = $('search-button').on('click', search);
+  var searchAndClear = function() {
+    search();
+    $('#search-form').val('')
+  };
 
+    $("input").keypress(function(event) {
+    if (event.which == 13) {
+      event.preventDefault();
+      searchAndClear();
+      }
+    });
 
+  $('#search-button').click(function() {
+      searchAndClear();
+    });
+  // var findIt = $('search-button').on('click',search);
 
 });
