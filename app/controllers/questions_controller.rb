@@ -9,26 +9,20 @@ class QuestionsController < ApplicationController
   def new
     @evaluation = Evaluation.find params[:evaluation_id]
     @question = Question.new
-    @types = ['Scale', 'Grade', 'True or False', 'Single Answer', 'Multiple Answers', 'Short Answer']
+    2.times { @question.answers.build}
   end
 
   def create
     evaluation = Evaluation.find params[:evaluation_id]
     @question = Question.new(question_params)
-    @question.evauation = evaluation
-    continue = params[:commit]
-    if continue == "Add Another Question"
-      if @question.save
-        redirect_to new_question_path
-      else
-        render :new, alert: "Questions was not saved"
-      end
+    @question.evaluation = evaluation
+    @question.answers.each do |a|
+      a.evaluation = evaluation
+    end
+    if @question.save
+      redirect_to evaluation_path(evaluation)
     else
-      if @question.save
-        redirect_to evaluation_questions_path
-      else
-        render :new
-      end
+      render :new, alert: "Questions was not saved"
     end
   end
 
@@ -59,7 +53,8 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit([:text, :type, :continue])
+    params.require(:question).permit([:text, :kind, {answers_attributes:
+                                        [:answer, :id, :_destroy]}])
   end
 
 end

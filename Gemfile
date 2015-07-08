@@ -16,6 +16,7 @@ gem 'coffee-rails', '~> 4.1.0'
 
 gem 'bootstrap-sass'
 gem "animate-rails"
+gem 'cocoon'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

@@ -2,9 +2,16 @@
   <h1><%= @evaluation.title %></h1>
 </div>
 <div>
+  <% @questions.each do |question| %>
+    <div>
+      <%= question.text %>
+    </div>
+  <% end %>
+</div>
+<div>
   <!-- Button trigger modal -->
   <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-    Launch demo modal
+    ADD A QUESTION
   </button>
 
   <!-- Modal -->
@@ -18,9 +25,14 @@
         <div class="modal-body">
           <%= simple_form_for([@evaluation, @question], html: {class: "form-horizontal"}) do |f| %>
             <%= f.input :text %>
-            <%= f.input :type, collection: @types %>
-            <%= f.submit "Add Another Question", input_html: {value: "true", name: "continue"} %>
-            <%= f.submit "Done", input_html: {value: "false", name: "continue"} %>
+            <%= f.input :kind, collection: @kinds %>
+            <%= f.simple_fields_for :answers do |ans| %>
+              <%= render 'answer_fields', f: ans %>
+            <% end %>
+            <div class="links">
+              <%= link_to_add_association 'Add Answer', f, :answers %>
+            </div>
+            <%= f.submit "Save Question" %>
           <% end %>
         </div>
         <div class="modal-footer">
