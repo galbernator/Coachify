@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
   # resources :articles, module: 'admin'
-  resources :companies, only: [:index, :new, :show, :destroy] do
+  resources :companies, only: [:index, :new, :create, :show, :destroy] do
     get :edit, on: :collection
     patch :update, on: :collection
     resources :locations
@@ -15,11 +15,13 @@ Rails.application.routes.draw do
       resources :questions
     end
 
-    resources :users, only: [:index, :new, :create] do
-      get :edit, on: :collection
-      patch :update, on: :collection
-      get :show, on: :collection
-    end
+    resource :profile
+    resources :users
+    # resources :users, only: [:index, :new, :create] do
+    #   get :edit, on: :collection
+    #   patch :update, on: :collection
+    #   get :show, on: :collection
+    # end
 
   resources :blogposts do
     resources :comments, only: [:create, :destroy]

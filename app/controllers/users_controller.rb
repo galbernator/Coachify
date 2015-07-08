@@ -23,13 +23,13 @@ class UsersController < ApplicationController
     end
 
     def edit
-      @user = User.find current_user
+      @user = current_user
     end
 
     def update
       @user = current_user
       if @user.authenticate(params[:user][:current_password]) && @user.update(user_params)
-        redirect_to users_path
+        redirect_to root_path
       else
         render :edit
       end
