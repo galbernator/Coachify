@@ -26,6 +26,8 @@ class EvaluationsController < ApplicationController
   end
 
   def show
+    @evaluation = Evaluation.find params[:id]
+    @question = Question.new
   end
 
   def edit
