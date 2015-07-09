@@ -284,9 +284,13 @@
 
 .navbar-pic {
   width: 40px;
-  max-height: 45px;
+  max-height: 40px;
   margin-right: 8px;
   margin-top: -7px;
   border: 1px solid #333;
   border-radius: 50%;
+  }
+
+  .hidden {
+    display: none;
   }

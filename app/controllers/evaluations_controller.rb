@@ -28,7 +28,7 @@ class EvaluationsController < ApplicationController
   def show
     @evaluation = Evaluation.find params[:id]
     @question = Question.new
-    @kinds = ['Scale', 'Grade', 'True or False', 'Multiple Answers']
+    @kinds = ['Scale', 'Grade', 'True or False', 'Multiple Choice', 'Multiple Answer', 'Yes or No', 'Other']
     2.times { @question.answers.build}
     @questions = Question.where(evaluation_id: @evaluation.id)
   end
