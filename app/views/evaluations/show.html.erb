@@ -29,17 +29,58 @@
           <h4 class="modal-title" id="myModalLabel">Add a Question</h4>
         </div>
         <div class="modal-body col-xs-offset-1 col-xs-10">
-          <%= simple_form_for([@evaluation, @question], remote: true,
+          <%= simple_form_for([@evaluation, @question],
                                     html: {class: "form-horizontal"}) do |f| %>
             <%= f.input :text %>
             <%= f.input :kind, collection: @kinds %>
-            <div id="answer-area">
-              <%= f.simple_fields_for :answers do |ans| %>
-                <%= render 'answer_fields', f: ans %>
-              <% end %>
+            <div class="answer-group" id="true-or-false-answers">
+              <input type='text' name='question[answers_attributes][][answer]' value="True" />
+              <input type='text' name='question[answers_attributes][][answer]' value="False" />
+              <input type='text' name='question[answers_attributes][][answer]' value="N/A" />
             </div>
-            <div class="links">
-              <%= link_to_add_association 'Add Answer', f, :answers %>
+            <div class="answer-group" id="yes-or-no-answers">
+              <input type='text' name='question[answers_attributes][][answer]' value="Yes" />
+              <input type='text' name='question[answers_attributes][][answer]' value="No" />
+              <input type='text' name='question[answers_attributes][][answer]' value="N/A" />
+            </div>
+            <div class="answer-group" id="scale-1-10-answers">
+              <input type='text' name='question[answers_attributes][][answer]' value="1" />
+              <input type='text' name='question[answers_attributes][][answer]' value="2" />
+              <input type='text' name='question[answers_attributes][][answer]' value="3" />
+              <input type='text' name='question[answers_attributes][][answer]' value="4" />
+              <input type='text' name='question[answers_attributes][][answer]' value="5" />
+              <input type='text' name='question[answers_attributes][][answer]' value="6" />
+              <input type='text' name='question[answers_attributes][][answer]' value="7" />
+              <input type='text' name='question[answers_attributes][][answer]' value="8" />
+              <input type='text' name='question[answers_attributes][][answer]' value="9" />
+              <input type='text' name='question[answers_attributes][][answer]' value="10" />
+            </div>
+            <div class="answer-group" id="grade-answers">
+              <input type='text' name='question[answers_attributes][][answer]' value="A" />
+              <input type='text' name='question[answers_attributes][][answer]' value="B" />
+              <input type='text' name='question[answers_attributes][][answer]' value="C" />
+              <input type='text' name='question[answers_attributes][][answer]' value="D" />
+              <input type='text' name='question[answers_attributes][][answer]' value="F" />
+            </div>
+            <div class="answer-group" id="multiple-choice-answers">
+              <input type='text' name='question[answers_attributes][][answer]' value="" />
+              <input type='text' name='question[answers_attributes][][answer]' value="" />
+              <input type='text' name='question[answers_attributes][][answer]' value="" />
+              <input type='text' name='question[answers_attributes][][answer]' value="" />
+              <a class="add-answer">Add Answer</a>
+            </div>
+            <div class="answer-group" id="multiple-answer-answers">
+              <input type='text' name='question[answers_attributes][][answer]' value="" />
+              <input type='text' name='question[answers_attributes][][answer]' value="" />
+              <input type='text' name='question[answers_attributes][][answer]' value="" />
+              <input type='text' name='question[answers_attributes][][answer]' value="" />
+              <input type='text' name='question[answers_attributes][][answer]' value="" />
+              <input type='text' name='question[answers_attributes][][answer]' value="" />
+              <a class="add-answer">Add Answer</a>
+            </div>
+            <div class="answer-group" id="custom-answers">
+              <input type='text' name='question[answers_attributes][][answer]' value="" />
+              <a class="add-answer">Add Answer</a>
             </div>
         </div>
         <div class="modal-footer">
