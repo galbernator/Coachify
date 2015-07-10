@@ -2,10 +2,9 @@ class LocationsController < ApplicationController
 
   def create
     @location = Location.new(location_params)
-    debugger
     @location.company = current_user.company
     if @location.save
-      redirect_to @location
+      redirect_to company_location_path(@location)
     else
       render :new
     end
@@ -34,7 +33,7 @@ class LocationsController < ApplicationController
   private
 
   def location_params
-    params.require(:location).permit([:name, :address, :city, :state, :phone_number, :district_id])
+    params.require(:location).permit([:name, :address, :city, :state, :zip_code, :phone_number, :district_id])
   end
 
 end
