@@ -9,10 +9,15 @@ Rails.application.routes.draw do
   resources :companies, only: [:index, :new, :create, :show, :destroy] do
     get :edit, on: :collection
     patch :update, on: :collection
+    resources :districts
     resources :locations
   end
     resources :evaluations do
       resources :questions
+      resources :responses, only: [:new, :create]
+    end
+
+    resources :observations, only: [:new, :create] do
     end
 
     resource :profile

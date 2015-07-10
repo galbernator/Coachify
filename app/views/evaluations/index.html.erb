@@ -1,6 +1,6 @@
 <div class="top-div">
   <% @evaluations.each do |eval| %>
-    <%= link_to eval.title, evaluation_questions_path(eval) %>
+    <%= link_to eval.title, evaluation_path(eval) %> 
   <% end %>
 </div>
 <div>

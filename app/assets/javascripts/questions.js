@@ -5,7 +5,7 @@ $(document).ready(function() {
     var kindValue = $("#question_kind option:selected").text();
 
     var getCurrentValue = function(){
-        kindValue = $("#question_kind option:selected").text();
+        kindValue = $(this).val();
         return kindValue;
     }
 
@@ -17,6 +17,7 @@ $(document).ready(function() {
     $('.answer-group').slideUp();
 
     $('#question_kind').change(function(){
+      $('[style="display: none;"] [type="text"]').attr('disabled', false);
       $('.answer-group').slideUp();
       var selection = $("#question_kind option:selected").text();
       console.log(selection);
@@ -27,8 +28,8 @@ $(document).ready(function() {
     });
 
     $('.add-answer').click(function() {
-       var html = "<input type='text' name='question[answers_attributes][][answer]' value='' />";
-       $(this).before(html);
+       var html = "<input type='text' class='form-control answer-field'  name='question[answers_attributes][][answer]' value='' />";
+       $(this).before(html).slideDown();
     });
 
 // var checkAndShowAnswerOptions = function() {

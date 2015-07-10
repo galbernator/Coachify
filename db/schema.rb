@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150708023300) do
+ActiveRecord::Schema.define(version: 20150710053420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,15 @@ ActiveRecord::Schema.define(version: 20150708023300) do
 
   add_index "companies", ["slug"], name: "index_companies_on_slug", using: :btree
 
+  create_table "districts", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "districts", ["company_id"], name: "index_districts_on_company_id", using: :btree
+
   create_table "evaluations", force: :cascade do |t|
     t.integer  "company_id"
     t.string   "title"
@@ -73,6 +82,15 @@ ActiveRecord::Schema.define(version: 20150708023300) do
 
   add_index "evaluations", ["company_id"], name: "index_evaluations_on_company_id", using: :btree
 
+  create_table "instances", force: :cascade do |t|
+    t.integer  "evaluation_id"
+    t.integer  "subject_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "instances", ["evaluation_id"], name: "index_instances_on_evaluation_id", using: :btree
+
   create_table "locations", force: :cascade do |t|
     t.string   "name"
     t.string   "address"
@@ -81,9 +99,24 @@ ActiveRecord::Schema.define(version: 20150708023300) do
     t.datetime "updated_at",   null: false
     t.integer  "company_id"
     t.string   "region"
+    t.integer  "district_id"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip_code"
   end
 
   add_index "locations", ["company_id"], name: "index_locations_on_company_id", using: :btree
+  add_index "locations", ["district_id"], name: "index_locations_on_district_id", using: :btree
+
+  create_table "observations", force: :cascade do |t|
+    t.integer  "evaluation_id"
+    t.integer  "subject_id"
+    t.integer  "observer_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "observations", ["evaluation_id"], name: "index_observations_on_evaluation_id", using: :btree
 
   create_table "questions", force: :cascade do |t|
     t.datetime "created_at",    null: false
@@ -97,11 +130,14 @@ ActiveRecord::Schema.define(version: 20150708023300) do
 
   create_table "responses", force: :cascade do |t|
     t.integer  "evaluation_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "subject_id"
+    t.integer  "observation_id"
   end
 
   add_index "responses", ["evaluation_id"], name: "index_responses_on_evaluation_id", using: :btree
+  add_index "responses", ["observation_id"], name: "index_responses_on_observation_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
@@ -124,9 +160,14 @@ ActiveRecord::Schema.define(version: 20150708023300) do
   add_foreign_key "blogposts", "users"
   add_foreign_key "comments", "blogposts"
   add_foreign_key "comments", "users"
+  add_foreign_key "districts", "companies"
   add_foreign_key "evaluations", "companies"
+  add_foreign_key "instances", "evaluations"
   add_foreign_key "locations", "companies"
+  add_foreign_key "locations", "districts"
+  add_foreign_key "observations", "evaluations"
   add_foreign_key "questions", "evaluations"
   add_foreign_key "responses", "evaluations"
+  add_foreign_key "responses", "observations"
   add_foreign_key "users", "companies"
 end

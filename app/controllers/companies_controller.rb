@@ -4,7 +4,12 @@ class CompaniesController < ApplicationController
 
 
   def index
-    @companies = Company.all
+    company = current_user.company.id
+    if current_user.is_site_admin
+      @companies = Company.all
+    else
+      @companies = Company.where(id: company)
+    end
   end
 
   def new
@@ -18,7 +23,7 @@ class CompaniesController < ApplicationController
     if @company.save
       # send email invite to company lead to sign up for admin account and then
       # directly redirect to fill out the remainder of the company details
-      redirect_to root_path
+      redirect_to @company
     else
       render :new
     end

@@ -19,7 +19,6 @@ class QuestionsController < ApplicationController
     @question.answers.each do |a|
       a.evaluation = evaluation
     end
-    debugger
     if @question.save
       redirect_to evaluation_path(evaluation)
     else
