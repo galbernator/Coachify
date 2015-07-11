@@ -2,27 +2,26 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .answer-button {
-  padding: 15px 0px;
+  padding: 15px 15px;
   border: 2px solid #999;
   border-radius: 40px;
   font-size: 1.5em;
   color: #999;
   background-color: transparent;
-  margin-right: auto;
-  margin-left: auto;
+  margin: 15px auto;
   text-align: center;
-  max-width: 90%;
+  width: 90%;
 }
 .answer-button:hover {
-  padding: 15px 0px;
+  padding: 15px 15px;
   border: 2px solid #fff;
   border-radius: 40px;
   font-size: 1.5em;
   color: #fff;
   background-color: #ff8300;
-  margin-right: auto;
-  margin-left: auto;
+  margin: 15px auto;
   text-align: center;
+  width: 90%;
 }
 
 .question-text {

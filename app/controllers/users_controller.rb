@@ -6,13 +6,18 @@ class UsersController < ApplicationController
 
     def new
       # find a way to determine the company that sent the invite link to the user and getb that value
-      company = Company.find #company.id
+      # company = Company.find #company.id
+      company = Company.find 1
       @user = User.new
-      @locations = Company.where(company_id: company.id).locations
+      @locations = []
+      Company.find(company).locations.each do |store|
+        @locations << [store.name, store.id]
+      end
     end
 
     def create
       @user = User.new(user_params)
+      @user.company = @user.location.company
       if @user.save
         session[:user_id] = @user.id
         redirect_to root_path
@@ -47,7 +52,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-      params.require(:user).permit([:first_name, :last_name, :email, :password, :password_confirmation, :avatar])
+      params.require(:user).permit([:first_name, :last_name, :email, :location_id, :password, :password_confirmation, :avatar])
     end
 
 end

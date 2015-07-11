@@ -5,10 +5,11 @@ $(document).ready(function() {
 
   $('.user-button').click(function(e){
     e.preventDefault();
+    $(".user-button").removeClass('selected-user')
     subject = $(".user-button").attr('id')
     $('#subject-id').val(subject);
     console.log(subject);
-    $(".user-button").toggleClass('selected-user');
+    $(this).addClass('selected-user');
   })
 
   $('.eval-button').click(function(e){
