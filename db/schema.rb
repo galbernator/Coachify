@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150711171703) do
+ActiveRecord::Schema.define(version: 20150711222937) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -132,11 +132,12 @@ ActiveRecord::Schema.define(version: 20150711171703) do
     t.integer  "evaluation_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-    t.integer  "subject_id"
     t.integer  "observation_id"
     t.integer  "question_id"
+    t.integer  "answer_id"
   end
 
+  add_index "responses", ["answer_id"], name: "index_responses_on_answer_id", using: :btree
   add_index "responses", ["evaluation_id"], name: "index_responses_on_evaluation_id", using: :btree
   add_index "responses", ["observation_id"], name: "index_responses_on_observation_id", using: :btree
   add_index "responses", ["question_id"], name: "index_responses_on_question_id", using: :btree
@@ -171,6 +172,7 @@ ActiveRecord::Schema.define(version: 20150711171703) do
   add_foreign_key "locations", "districts"
   add_foreign_key "observations", "evaluations"
   add_foreign_key "questions", "evaluations"
+  add_foreign_key "responses", "answers"
   add_foreign_key "responses", "evaluations"
   add_foreign_key "responses", "observations"
   add_foreign_key "responses", "questions"

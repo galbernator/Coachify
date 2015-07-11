@@ -9,7 +9,7 @@
   <% current_user.location.users.each do |employee| %>
     <% if employee != current_user %>
     <div class="col-xs-6 col-sm-4 col-md-3">
-      <button class="user-button" id="<%= employee.id %>">
+      <button class="subject-button" id="<%= employee.id %>">
         <% if employee.avatar.present? %>
           <%= image_tag employee.avatar.url, class: "user-avatar" %>
         <% else %>

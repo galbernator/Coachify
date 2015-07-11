@@ -1,17 +1,15 @@
 class ResponsesController < ApplicationController
 
   def new
-    @questions = Question.where(evaluation: params[:evaluation_id])
+    @evaluation = Evaluation.find(params[:evaluation_id])
+    @questions = Question.where(evaluation: @evaluation)
     @observation = Observation.where(observer_id: current_user.id).last
   end
 
   def create
-    response_params = params.require(:response).permit([:answer, :observation, :question])
+    response_params = params.require(:response).permit([:answer_id, :observation_id, :question_id, :evaluation_id])
     @response = Response.new(response_params)
-    if @response.save
-      render notice: "Answer saved"
-    else
-      render alert: "Please select response again"
-    end
+    @response.save
+    head :created
   end
 end

@@ -29,8 +29,16 @@
   font-weight: bold;
   padding: 15px auto;
   color: #ff8300;
+  text-align: center;
 }
 
 .answer-list {
   list-style-type: none;
+}
+
+.question-box {
+  -webkit-animation-duration: 0.7s;
+          animation-duration: 0.7s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
 }

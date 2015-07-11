@@ -3,13 +3,13 @@ $(document).ready(function() {
   var subject
   var eval
 
-  $('.user-button').click(function(e){
+  $('.subject-button').click(function(e){
     e.preventDefault();
-    $(".user-button").removeClass('selected-user')
-    subject = $(".user-button").attr('id')
+    $(".subject-button").removeClass('selected-subject')
+    subject = $(this).attr('id')
     $('#subject-id').val(subject);
     console.log(subject);
-    $(this).addClass('selected-user');
+    $(this).addClass('selected-subject');
   })
 
   $('.eval-button').click(function(e){
@@ -22,6 +22,7 @@ $(document).ready(function() {
   var submitSuccess = function(){
     console.log("Should have saved user number " + subject + " and eval number " + eval + "successfully!");
   }
+
 
   //
   // $('#start-observation').click(function(){
