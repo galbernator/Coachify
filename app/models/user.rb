@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   has_many :blogposts, dependent: :nullify
   belongs_to :company
+  belongs_to :location
+  has_many :observations, dependent: :nullify
 
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -16,5 +18,5 @@ class User < ActiveRecord::Base
   def full_name
     "#{first_name} #{last_name}"
   end
-  
+
 end

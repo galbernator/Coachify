@@ -15,26 +15,26 @@
           <div class="col-xs-offset-1">&nbsp;</div>
           <% question.answers.each do |answer| %>
             <div class="scale-answer col-xs-1" id="<%= question.id %>">
-              <p class="answer-button"><%= answer.answer %></p>
+              <button class="answer-button"><%= answer.answer %></button>
             </div>
           <% end %>
         <% elsif question.kind == "Grade" %>
         <div class="col-xs-offset-1"></div>
           <% question.answers.each do |answer| %>
             <div class="grade-answer col-xs-2" id="<%= question.id %>">
-              <p class="answer-button"><%= answer.answer %></p>
+              <button class="answer-button"><%= answer.answer %></button>
             </div>
           <% end %>
         <% elsif question.kind == "True of False" || question.kind == "Yes or No" %>
           <% question.answers.each do |answer| %>
             <div class="scale-answer col-xs-4" id="<%= question.id %>">
-              <p class="answer-button"><%= answer.answer %></p>
+              <button class="answer-button"><%= answer.answer %></button>
             </div>
           <% end %>
         <% else %>
           <% question.answers.each do |answer| %>
             <div class="other-answer col-xs-6" id="<%= question.id %>">
-              <p class="answer-button"><%= answer.answer %></p>
+              <button class="answer-button"><%= answer.answer %></button>
             </div>
           <% end %>
         <% end %>

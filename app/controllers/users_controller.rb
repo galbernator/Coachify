@@ -5,7 +5,10 @@ class UsersController < ApplicationController
     end
 
     def new
+      # find a way to determine the company that sent the invite link to the user and getb that value
+      company = Company.find #company.id
       @user = User.new
+      @locations = Company.where(company_id: company.id).locations
     end
 
     def create

@@ -1,0 +1,24 @@
+<div class="top-div">
+  <h1><%= @location.name %></h1>
+  <%= @location.company.name %>
+</div>
+<div>
+  <h3>Store Manager</h3>
+  <% @users.each do |user| %>
+    <div>
+      <% if user.is_manager %>
+        <%= user.full_name %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+<div>
+  <h3>Store Employees</h3>
+  <% @users.each do |user| %>
+    <% if user.is_manager == nil %>
+      <div>
+        <%= user.full_name %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

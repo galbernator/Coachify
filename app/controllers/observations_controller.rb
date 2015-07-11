@@ -1,17 +1,18 @@
 class ObservationsController < ApplicationController
 
+  before_action :authorize_user!
+
   def new
     @observation = Observation.new
     @evaluations = current_user.company.evaluations
   end
 
   def create
-    observation_params = params.require(:observation).permit(:subject_id, )
+    observation_params = params.require(:observation).permit(:subject_id, :evaluation_id )
     @observation = Observation.new(observation_params)
     @observation.observer = current_user
-    @observation.evaluation = current_user.company.evaluations
     if @observation.save
-      redirect_to new_observation_response_path(@observation)
+      redirect_to new_evaluation_response_path(params[:observation][:evaluation_id].to_i)
     else
       render :new
     end

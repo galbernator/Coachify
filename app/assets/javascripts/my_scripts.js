@@ -1,5 +1,13 @@
 $(document).ready(function() {
 
+  // $('#nav-button-sm-screen a').click(function(event){
+  //   event.preventDefault();
+  // });
+  //
+  // $('#nav-button a').click(function(event){
+  //   event.preventDefault();
+  // })
+
   var hamburger = $('#hamburger')
 
   hamburger.click(function() {

@@ -1,13 +1,19 @@
 class LocationsController < ApplicationController
 
   def create
+    district = District.find_by_id(params[:location][:district_id].to_i)
     @location = Location.new(location_params)
     @location.company = current_user.company
     if @location.save
-      redirect_to company_location_path(@location)
+      redirect_to (:back)
     else
       render :new
     end
+  end
+
+  def show
+    @location = Location.find params[:id]
+    @users = User.where(location_id: @location.id)
   end
 
   def edit
