@@ -2,15 +2,7 @@ $(document).ready(function() {
 
   var subject
   var eval
-
-  $('.subject-button').click(function(e){
-    e.preventDefault();
-    $(".subject-button").removeClass('selected-subject')
-    subject = $(this).attr('id')
-    $('#subject-id').val(subject);
-    console.log(subject);
-    $(this).addClass('selected-subject');
-  })
+  
 
   $('.eval-button').click(function(e){
     e.preventDefault();

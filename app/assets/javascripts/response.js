@@ -1,9 +1,16 @@
 $(document).ready(function() {
 
 
+    // this will be the action to close the modal once the survey is completed
+    $('close-modal').click(function(){
+      var list = $('.answer-list')
+      var finishedButton = '<button id="close-modal">Click to Finish</li>'
+      list.append(finishedButton);
+    });
+
+
 
    var nextQuestion = function () {
-       console.log("next question function called");
        $($questions.get(currentQuestion)).fadeOut(20);
       //increment the current question by one
       currentQuestion = currentQuestion + 1;
@@ -11,7 +18,8 @@ $(document).ready(function() {
       //if there are no more questions do stuff
       if (currentQuestion == totalQuestions) {
 
-        // Close the modal window
+        // Button to close the modal window appears that let them know that the observation is complete
+        return '<button id="close-modal">Click to Finish</li>';
 
       } else {
 
@@ -28,11 +36,6 @@ $(document).ready(function() {
 
   var saveAnswer = function(answer, questionId, evalId) {
     var observationId = parseInt($('ul[data-observation]').data()['observation']);
-      console.log("save answer function called");
-      console.log("Answer = " + answer);
-      console.log("Question ID = " + questionId);
-      console.log("Eval ID = " + evalId);
-      console.log("Observation ID = " + observationId);
       // The AJAX save request is sent containing the question, evaluation and
       $.post('/evaluations/' + evalId + '/responses', { response: {question_id: questionId, answer_id: answer, observation_id: observationId, evaluation_id: evalId}}, nextQuestion);
   }
@@ -60,9 +63,6 @@ $(document).ready(function() {
       var url = $(this).data()['url']
       var evalId = parseInt(url[url.length - 1]);
       $(this).fadeTo(100, 0.1).fadeTo(100, 1.0);
-      console.log(answer);
-      console.log(questionId);
-      console.log(evalId);
        //bounce up the current question,
        //putting a function inside of bounceOutUp calls that function
        //We then listen for the animation to complete and call to save the answer ,

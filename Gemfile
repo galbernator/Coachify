@@ -16,7 +16,7 @@ gem 'coffee-rails', '~> 4.1.0'
 
 gem 'bootstrap-sass'
 gem "animate-rails"
-gem 'cocoon'
+gem 'smartcropper'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -30,6 +30,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'friendly_id', '~> 5.1.0'
 gem 'simple_form'
 gem 'carrierwave'
+gem 'rails_12factor'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'

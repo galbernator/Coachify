@@ -31,6 +31,20 @@ class AvatarUploader < CarrierWave::Uploader::Base
   #   # do something
   # end
 
+  def smart_crop_and_scale(width, height)
+    manipulate! do |img|
+      img = CropToelie.new(img)
+      img = img.smart_crop_and_scale(width, height)
+      img = yield(img) if block_given?
+      img
+    end
+  end
+
+
+  version :cover do
+  process :smart_square
+  end
+
   # Create different versions of your uploaded files:
   # version :thumb do
   #   process :resize_to_fit => [50, 50]
