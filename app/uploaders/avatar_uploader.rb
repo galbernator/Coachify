@@ -3,7 +3,7 @@
 class AvatarUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
+   include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
@@ -33,16 +33,15 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   def smart_crop_and_scale(width, height)
     manipulate! do |img|
-      img = CropToelie.new(img)
+      img = SmartCropper.new(img)
       img = img.smart_crop_and_scale(width, height)
       img = yield(img) if block_given?
       img
     end
   end
 
-
-  version :cover do
-  process :smart_square
+  version :avatar do
+    process :smart_crop_and_scale => [250, 250]
   end
 
   # Create different versions of your uploaded files:
