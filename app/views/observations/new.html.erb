@@ -11,7 +11,7 @@
     <div class="col-xs-6 col-sm-4 col-md-3">
       <button class="subject-button" id="<%= employee.id %>">
         <% if employee.avatar.present? %>
-          <%= image_tag employee.avatar.url.smart_square, class: "user-avatar" %>
+          <%= image_tag employee.avatar.url, class: "user-avatar" %>
         <% else %>
           <%= image_tag default_avatag.png %>
         <% end %>
