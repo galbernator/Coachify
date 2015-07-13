@@ -7,12 +7,12 @@ class UsersController < ApplicationController
     def new
       # find a way to determine the company that sent the invite link to the user and getb that value
       # company = Company.find #company.id
-      company = Company.find 1
+      # company = Company.find 1
       @user = User.new
-      @locations = []
-      Company.find(company).locations.each do |store|
-        @locations << [store.name, store.id]
-      end
+      # @locations = []
+      # Company.find(company).locations.each do |store|
+      #   @locations << [store.name, store.id]
+      # end
     end
 
     def create
