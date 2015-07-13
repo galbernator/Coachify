@@ -24,7 +24,7 @@ if ($('#nav-trigger').length != 0 ) {
     })
 
     var scrollDown = function() {
-      $('#brand img').attr('src', '/assets/logo-white.png');
+      $('#brand img').attr('src', '<%= image_url("logo-white.png") %>');
       $('.navbar').removeClass('animated fadeInUp');
       $('#nav-button-sm-screen').removeClass('fadeInUp');
       $('.navbar').addClass('animated fadeInDown');
