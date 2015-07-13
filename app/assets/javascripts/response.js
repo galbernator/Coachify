@@ -19,7 +19,7 @@ $(document).ready(function() {
       if (currentQuestion == totalQuestions) {
 
         // Button to close the modal window appears that let them know that the observation is complete
-        return '<button id="close-modal">Click to Finish</li>';
+        $('body').append('<li><button id="close-modal">Click to Finish</button></li>');
 
       } else {
 

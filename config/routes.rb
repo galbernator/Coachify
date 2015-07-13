@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     end
 
     resource :profile
-    resources :users
+    resources :users, except: [:index]
     # resources :users, only: [:index, :new, :create] do
     #   get :edit, on: :collection
     #   patch :update, on: :collection
