@@ -36,7 +36,7 @@ if ($('#nav-trigger').length != 0 ) {
       $('#nav-button-sm-screen').removeClass('animated fadeInDown');
       $('.navbar').addClass('animated fadeInUp');
       $('#nav-button-sm-screen').addClass('animated fadeInUp');
-      $('#brand img').attr('src', '/assets/logo-color.png');
+      $('#brand img').attr('src', '<%= image_url("logo-color.png") %>');
     };
 
     var logoSwitcher = function(direction) {
