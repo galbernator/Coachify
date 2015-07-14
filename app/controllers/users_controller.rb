@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       if invitation.present?
         @user = User.new(user_params)
         @user.company = @user.location.company
-        @user.invitation = invitation
+        # @user.invitation = invitation
         debugger
         if @user.save
           session[:user_id] = @user.id

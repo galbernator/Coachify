@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true, on: :creation
   validates :location, presence: true, on: :creation
   validates :invitation_token, presence: true, on: :creation
-  # validates :invitation_id, uniqueness: true
+  validates :invitation_id, uniqueness: true
 
   def full_name
     "#{first_name} #{last_name}"
