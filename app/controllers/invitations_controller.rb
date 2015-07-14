@@ -5,7 +5,7 @@ class InvitationsController < ApplicationController
   end
 
   def create
-    invitation_params = params.require(:invitation).permit([:recipient_email, :is_site_admin, :is_admin, :is_manager, :token])
+    invitation_params = params.require(:invitation).permit([:recipient_email, :role_id, :token])
     @invitation = Invitation.new(invitation_params)
     @invitation.sender = current_user
     company = @invitation.sender.company

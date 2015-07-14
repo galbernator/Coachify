@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   has_many :sent_invitations, class_name: "Invitation", foreign_key: "sender_id"
   belongs_to :invitation
 
+  belongs_to :role
+
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :email, presence: true, uniqueness: true,
@@ -20,7 +22,7 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true, on: :creation
   validates :location, presence: true, on: :creation
   validates :invitation_token, presence: true, on: :creation
-  validates :invitation_id, uniqueness: true
+  validates :invitation_id, uniqueness: true, on: :creation
 
   def full_name
     "#{first_name} #{last_name}"

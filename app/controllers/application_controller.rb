@@ -17,4 +17,35 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
+
+  def is_site_admin?(user)
+    user.role_id == 1
+  end
+
+  helper_method :is_site_admin?
+
+  def is_company_admin?(user)
+    user.role_id == 2 || current_user.role_id == 3
+  end
+
+  helper_method :is_company_admin?
+
+  def is_district_manger?(user)
+    user.role_id == 4 || current_user.role_id == 5
+  end
+
+  helper_method :is_district_manger?
+
+  def is_store_manager?(user)
+    user.role_id == 6
+  end
+
+  helper_method :is_store_manager?
+
+  def is_employee?(user)
+    user.role_id == 7
+  end
+
+  helper_method :is_employee?
+
 end

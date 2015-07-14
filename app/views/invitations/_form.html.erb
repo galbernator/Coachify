@@ -1,4 +1,8 @@
 <%= simple_form_for([@company, @invitation], html: {class: "form-horizontal"}) do |f| %>
+  <% user_role = current_user.role.id %>
+  <% roles = user_role == 1 || user_role == 2 ?
+      Role.where("id >= ?", user_role) : Role.where("id > ?", user_role) %>
   <%= f.input :recipient_email, input_html: {label: "Recipient's Email Address"} %>
+  <%= f.collection_select :role_id, roles, :id, :position, html: {class: "form-control"} %>
   <%= f.submit "Send Invitation" %>
 <% end %>

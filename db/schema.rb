@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150714003634) do
+ActiveRecord::Schema.define(version: 20150714215343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,13 +95,12 @@ ActiveRecord::Schema.define(version: 20150714003634) do
     t.integer  "sender_id"
     t.string   "recipient_email"
     t.string   "token"
-    t.boolean  "is_site_admin"
-    t.boolean  "is_admin"
-    t.boolean  "is_manager"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "role_id"
   end
 
+  add_index "invitations", ["role_id"], name: "index_invitations_on_role_id", using: :btree
   add_index "invitations", ["sender_id"], name: "index_invitations_on_sender_id", using: :btree
 
   create_table "invites", force: :cascade do |t|
@@ -160,24 +159,29 @@ ActiveRecord::Schema.define(version: 20150714003634) do
   add_index "responses", ["observation_id"], name: "index_responses_on_observation_id", using: :btree
   add_index "responses", ["question_id"], name: "index_responses_on_question_id", using: :btree
 
+  create_table "roles", force: :cascade do |t|
+    t.string   "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
     t.string   "password_digest"
-    t.string   "is_admin"
-    t.string   "is_manager"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.boolean  "is_site_admin"
     t.integer  "company_id"
     t.string   "avatar"
     t.integer  "location_id"
     t.integer  "invitation_id"
+    t.integer  "role_id"
   end
 
   add_index "users", ["company_id"], name: "index_users_on_company_id", using: :btree
   add_index "users", ["location_id"], name: "index_users_on_location_id", using: :btree
+  add_index "users", ["role_id"], name: "index_users_on_role_id", using: :btree
 
   add_foreign_key "answers", "evaluations"
   add_foreign_key "answers", "questions"
@@ -187,6 +191,7 @@ ActiveRecord::Schema.define(version: 20150714003634) do
   add_foreign_key "districts", "companies"
   add_foreign_key "evaluations", "companies"
   add_foreign_key "instances", "evaluations"
+  add_foreign_key "invitations", "roles"
   add_foreign_key "locations", "companies"
   add_foreign_key "locations", "districts"
   add_foreign_key "observations", "evaluations"
@@ -197,4 +202,5 @@ ActiveRecord::Schema.define(version: 20150714003634) do
   add_foreign_key "responses", "questions"
   add_foreign_key "users", "companies"
   add_foreign_key "users", "locations"
+  add_foreign_key "users", "roles"
 end

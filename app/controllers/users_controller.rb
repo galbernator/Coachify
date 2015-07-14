@@ -12,13 +12,13 @@ class UsersController < ApplicationController
     end
 
     def create
-      invitation = Invitation.where(recipient_email: params[:user][:email], token: params[:token])
+      invitation = Invitation.where(recipient_email: params[:user][:email], token: params[:token]).first
 
       if invitation.present?
         @user = User.new(user_params)
-        @user.company = @user.location.company
-        # @user.invitation = invitation
-        debugger
+        @user.invitation = invitation
+        @user.role = invitation.role
+        @user.company = invitation.sender.company
         if @user.save
           session[:user_id] = @user.id
           redirect_to root_path
