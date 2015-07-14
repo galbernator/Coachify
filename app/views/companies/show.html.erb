@@ -3,6 +3,9 @@
     <%= @company.name %>
   </div>
   <div>
+    <%= render "/invitations/form" %>
+  </div>
+  <div>
     <%= link_to "Add a District", new_company_district_path(@company) %>
   </div>
   <div>

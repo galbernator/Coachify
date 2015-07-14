@@ -31,6 +31,7 @@ class CompaniesController < ApplicationController
 
   def show
     @evaluation = Evaluation.new
+    @invitation = Invitation.new
   end
 
   def edit

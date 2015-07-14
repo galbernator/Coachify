@@ -1,0 +1,4 @@
+<%= simple_form_for([@company, @invitation], html: {class: "form-horizontal"}) do |f| %>
+  <%= f.input :recipient_email, input_html: {label: "Recipient's Email Address"} %>
+  <%= f.submit "Send Invitation" %>
+<% end %>

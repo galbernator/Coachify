@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150711222937) do
+ActiveRecord::Schema.define(version: 20150714003634) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,6 +91,24 @@ ActiveRecord::Schema.define(version: 20150711222937) do
 
   add_index "instances", ["evaluation_id"], name: "index_instances_on_evaluation_id", using: :btree
 
+  create_table "invitations", force: :cascade do |t|
+    t.integer  "sender_id"
+    t.string   "recipient_email"
+    t.string   "token"
+    t.boolean  "is_site_admin"
+    t.boolean  "is_admin"
+    t.boolean  "is_manager"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "invitations", ["sender_id"], name: "index_invitations_on_sender_id", using: :btree
+
+  create_table "invites", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "locations", force: :cascade do |t|
     t.string   "name"
     t.string   "address"
@@ -155,6 +173,7 @@ ActiveRecord::Schema.define(version: 20150711222937) do
     t.integer  "company_id"
     t.string   "avatar"
     t.integer  "location_id"
+    t.integer  "invitation_id"
   end
 
   add_index "users", ["company_id"], name: "index_users_on_company_id", using: :btree
