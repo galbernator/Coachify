@@ -24,7 +24,9 @@ class DistrictsController < ApplicationController
   def show
     @district = District.find(params[:id])
     @location = Location.new
+    @company = @district.company
     @states = us_states
+    @invitation = Invitation.new
   end
 
   def edit

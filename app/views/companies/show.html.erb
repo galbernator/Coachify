@@ -3,10 +3,12 @@
     <%= @company.name %>
   </div>
   <div>
-    Current User Role: <%= current_user.role.id %>
+    <%= render "/invitations/form" %>
   </div>
   <div>
-    <%= render "/invitations/form" %>
+    <% @company.districts.each do |district| %>
+      <%= link_to district.name, company_district_path(district.company, district) %>
+    <% end %>
   </div>
   <div>
     <%= link_to "Add a District", new_company_district_path(@company) %>

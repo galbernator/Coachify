@@ -1,8 +1,9 @@
 class Company < ActiveRecord::Base
 
-  has_many :locations, dependent: :destroy
-  has_many :evaluations, dependent: :destroy
-  has_many :users, dependent: :destroy
+  has_many :locations, dependent: :nullify
+  has_many :evaluations, dependent: :nullify
+  has_many :users, dependent: :nullify
+  has_many :districts, dependent: :nullify
 
   extend FriendlyId
   friendly_id :name, use: :slugged

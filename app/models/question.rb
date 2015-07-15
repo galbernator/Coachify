@@ -1,6 +1,7 @@
 class Question < ActiveRecord::Base
   belongs_to :evaluation
   belongs_to :user
+  belongs_to :observation
 
   has_many :responses, dependent: :nullify
   has_many :answers, dependent: :nullify
