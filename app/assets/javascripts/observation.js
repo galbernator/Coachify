@@ -2,8 +2,20 @@ $(document).ready(function() {
 
   var subject
   var eval
-  
 
+  var employeeButton = $('.subject-button')
+
+  //Dispable the default action when selecting an employee for an observation
+  employeeButton.click(function(e){
+    e.preventDefault();
+    employeeButton.removeClass('selected-subject')
+    subject = $(this).attr('id')
+    $('#subject-id').val(subject);
+    console.log(subject);
+    $(this).addClass('selected-subject');
+  });
+
+  
   $('.eval-button').click(function(e){
     e.preventDefault();
     eval = $(this).attr('id')

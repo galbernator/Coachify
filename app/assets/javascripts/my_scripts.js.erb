@@ -66,15 +66,4 @@ if ($('#nav-trigger').length != 0 ) {
     })
   }
 
-  var employeeButton = $('.subject-button')
-
-  employeeButton.click(function(e){
-    e.preventDefault();
-    employeeButton.removeClass('selected-subject')
-    subject = $(this).attr('id')
-    $('#subject-id').val(subject);
-    console.log(subject);
-    $(this).addClass('selected-subject');
-  });
-
 });

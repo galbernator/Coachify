@@ -3,9 +3,7 @@ $(document).ready(function() {
 
     // this will be the action to close the modal once the survey is completed
     $('close-modal').click(function(){
-      var list = $('.answer-list')
-      var finishedButton = '<button id="close-modal">Click to Finish</li>'
-      list.append(finishedButton);
+
     });
 
 
@@ -19,7 +17,10 @@ $(document).ready(function() {
       if (currentQuestion == totalQuestions) {
 
         // Button to close the modal window appears that let them know that the observation is complete
-        $('body').append('<li><button id="close-modal">Click to Finish</button></li>');
+        var list = $('.answer-list')
+        var finishedButton =
+          '<div class="row"><div class="col-xs-12 col-sm-offset-3 col-sm-6"><div id="thanks"><h2>Thank You!</h2><p>This observation is now complete. To start a new observation, just close this window and then click "Start an Observation"</div><button id="close-modal">Click to Finish</button></div></div>'
+        list.append(finishedButton);
 
       } else {
 

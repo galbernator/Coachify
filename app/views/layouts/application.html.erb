@@ -53,7 +53,7 @@
           <% else %>
             <li><a href="<%= new_session_path %>">Log In</a></li>
           <% end %>
-          <li id="nav-button-lg-screen" class="nav-button"><a href="<%= new_observation_path %>"><div id="nav-button">Start an Evaluation</div></a></li>
+          <li id="nav-button-lg-screen" class="nav-button"><a href="<%= new_observation_path %>"><div id="nav-button">Start an Observation</div></a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -63,24 +63,6 @@
     <div class="nav-button"><a href="<%= new_observation_path %>"><div id="nav-button">Start an Evaluation</div></a></div>
   </div>
   <div class="container-fluid" id="content">
-    <!-- Modal -->
-    <!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-          </div>
-          <div class="modal-body">
-            ...
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-        </div>
-      </div>
-    </div> -->
 
   <%= yield %>
 
