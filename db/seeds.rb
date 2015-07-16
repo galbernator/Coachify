@@ -10,3 +10,5 @@ user_roles = ['Site Admin', 'Company Owner', 'Company Admin', 'Regional Manager'
 user_roles.each do |role|
   Role.create(position: role)
 end
+
+User.create!(first_name: "Steve", last_name: "Galbraith", email: "me@mail.com", password: "abc123", company: 1, role_id: 1)

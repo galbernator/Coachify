@@ -21,7 +21,7 @@
   #main-title {
     font-size: 6.5em;
     text-align: center;
-    padding-top: 98px;
+    padding-top: 88px;
     color: #ff8300;
   }
 
@@ -50,7 +50,7 @@
   }
 
   #blog-background {
-    background: url(shop.jpg) no-repeat center center fixed;
+    background: url(asset_path('shop.jpg')) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -83,8 +83,8 @@
   #nav-button-sm-screen {
     display: inline-block;
     position:fixed;
-      top: 23px;
-      right: 100px;
+      top: 24px;
+      right: 90px;
     z-index: 100;
     font-size: 1.15em;
   }
