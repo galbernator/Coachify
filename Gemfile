@@ -17,6 +17,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'bootstrap-sass'
 gem "animate-rails"
 gem 'smartcropper'
+gem 'chart-js-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

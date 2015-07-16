@@ -11,10 +11,10 @@ class InvitationsController < ApplicationController
     company = @invitation.sender.company
     if @invitation.save
       InvitationMailer.user_invitation(@invitation, signup_url(@invitation.token)).deliver
-      redirect_to company_path(company), message: "Invitation sent"
+      redirect_to (:back), message: "Invitation sent"
     else
       debugger
-      redirect_to company_path(company), alert: "Invitation not sent"
+      redirect_to (:back), alert: "Invitation not sent"
     end
   end
 

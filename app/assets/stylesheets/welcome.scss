@@ -5,7 +5,7 @@
 
 // start of large screen media query _______________________
 
-@media (min-width: 730px) {
+// @media (min-width: 730px) {
   #home-background {
     background: url(asset_path('main_background-lg.jpg')) no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -14,9 +14,9 @@
     background-size: cover;
   }
 
-  #nav-button-sm-screen {
-    display: none;
-  }
+  // #nav-button-sm-screen {
+  //   display: none;
+  // }
 
   #main-title {
     font-size: 6.5em;
@@ -64,22 +64,22 @@
     padding-bottom: 48px;
     color: #fff;
   }
-}
+// }
 
 // end of large screen media query_______________
 
 
 // start of small screen media query_____________
 
-@media (max-width: 767px) {
-  #home-background {
-    position: relative;
-    top: -50px;
-  background-image: url(asset_path('main_background-sm3.jpg'));
-  background-size: cover;
-  background-repeat: no-repeat;
-  }
-
+// @media (max-width: 767px) {
+//   #home-background {
+//     position: relative;
+//     top: -50px;
+//   background-image: url(asset_path('main_background-sm3.jpg'));
+//   background-size: cover;
+//   background-repeat: no-repeat;
+//   }
+//
   #nav-button-sm-screen {
     display: inline-block;
     position:fixed;
@@ -88,69 +88,69 @@
     z-index: 100;
     font-size: 1.15em;
   }
-
+//
   #nav-button-sm-screen a {
     text-decoration: none;
     color: #333;
   }
-
-  .navbar {
-    z-index: 10;
-    min-height: 72px;
-  }
-
-  #hamburger {
-    margin-top: 12px;
-  }
-
-  #nav-button-lg-screen {
-    display: none;
-  }
-
-  #main-title {
-    font-size: 3.8em;
-    text-align: center;
-    padding-top: 85px;
-    color: #ff8300;
-  }
-
-  .subheader {
-    margin: 30px auto;
-    font-size: 1.45em;
-    color: #fff;
-    line-height: 26px;
-    text-align: center;
-    padding: 0px 30px;
-  }
-
-  .big-top {
-    padding: 10px 0;
-  }
-
-  .scroll-down {
-    display: none;
-  }
-
-  .main-btn-margin {
-    margin-bottom: 30px;
-  }
-
-  #blog-background {
-    background: url(shop.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-  }
-
-  .page-title {
-    font-size: 3.8em;
-    text-align: center;
-    padding-top: 98px;
-    padding-bottom: 48px;
-    color: #fff;
-  }
-}
+//
+//   .navbar {
+//     z-index: 10;
+//     min-height: 72px;
+//   }
+//
+//   #hamburger {
+//     margin-top: 12px;
+//   }
+//
+//   #nav-button-lg-screen {
+//     display: none;
+//   }
+//
+//   #main-title {
+//     font-size: 3.8em;
+//     text-align: center;
+//     padding-top: 85px;
+//     color: #ff8300;
+//   }
+//
+//   .subheader {
+//     margin: 30px auto;
+//     font-size: 1.45em;
+//     color: #fff;
+//     line-height: 26px;
+//     text-align: center;
+//     padding: 0px 30px;
+//   }
+//
+//   .big-top {
+//     padding: 10px 0;
+//   }
+//
+//   .scroll-down {
+//     display: none;
+//   }
+//
+//   .main-btn-margin {
+//     margin-bottom: 30px;
+//   }
+//
+//   #blog-background {
+//     background: url(shop.jpg) no-repeat center center fixed;
+//     -webkit-background-size: cover;
+//     -moz-background-size: cover;
+//     -o-background-size: cover;
+//     background-size: cover;
+//   }
+//
+//   .page-title {
+//     font-size: 3.8em;
+//     text-align: center;
+//     padding-top: 98px;
+//     padding-bottom: 48px;
+//     color: #fff;
+//   }
+// }
 
 // end of small screen media query_______________________
 
