@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   end
 
   resource :profile
-  resources :users, except: [:index, :new]
+  resources :users, except: [:index]
   get   "users/new/:token" => "users#new", as: :signup
 
   resources :blogposts do
