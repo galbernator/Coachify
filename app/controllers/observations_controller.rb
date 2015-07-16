@@ -23,6 +23,6 @@ class ObservationsController < ApplicationController
   end
 
   def show
-    @observations = Observation.where(observer_id: 1)
+    @observations  = current_user.company.observations
   end
 end

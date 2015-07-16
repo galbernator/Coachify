@@ -5,6 +5,8 @@ class Company < ActiveRecord::Base
   has_many :users, dependent: :nullify
   has_many :districts, dependent: :nullify
 
+  has_many :observations, through: :users
+
   extend FriendlyId
   friendly_id :name, use: :slugged
 

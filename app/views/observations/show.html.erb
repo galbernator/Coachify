@@ -1,4 +1,11 @@
 <div class="top-div">
+  <div class="row">
+    <div class="col-xs-offset-1 col-xs-10" id="daily-chart">
+      <canvas id="myChart"></canvas>
+    </div>
+  </div>
+</div>
+<div>
   <% @observations.each do |observation| %>
     <div>
       <%= observation.created_at %>
