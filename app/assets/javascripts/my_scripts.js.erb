@@ -19,7 +19,8 @@ if ($('#nav-trigger').length != 0 ) {
     handler: function() {
       $('#navbar').toggleClass('color-change');
       $('#nav-button').toggleClass('white-text');
-      $('#hamburger .icon-bar').toggleClass('color-change');
+      $('#nav-button-sm-screen a #nav-button').toggleClass('white-text');
+      $('.navbar-header #hamburger .icon-bar').toggleClass('color-change');
       }
     })
 
