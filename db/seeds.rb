@@ -11,4 +11,6 @@ user_roles.each do |role|
   Role.create(position: role)
 end
 
+Company.create!(name: "Banana Inc", email: "me@mail.com")
+
 User.create!(first_name: "Steve", last_name: "Galbraith", email: "me@mail.com", password: "abc123", company: 1, role_id: 1)
