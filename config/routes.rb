@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :responses, only: [:new, :create]
   end
 
-  resources :observations, only: [:new, :create] do
+  resources :observations, only: [:new, :create, :show] do
   end
 
   resource :profile

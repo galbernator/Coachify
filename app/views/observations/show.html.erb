@@ -1,0 +1,13 @@
+<div class="top-div">
+  <% @observations.each do |observation| %>
+    <div>
+      <%= observation.created_at %>
+      <% observation.responses.each do |response| %>
+        <div>
+          <%= response.question.text %> - <%= response.answer.answer %>
+        </div>
+      <% end %>
+    </div>
+    <hr>
+  <% end %>
+</div>

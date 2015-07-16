@@ -21,4 +21,8 @@ class ObservationsController < ApplicationController
       render :new
     end
   end
+
+  def show
+    @observations = Observation.where(observer_id: 1)
+  end
 end
