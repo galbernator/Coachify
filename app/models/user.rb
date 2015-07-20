@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   belongs_to :company
   belongs_to :location
   has_many :observations, dependent: :nullify, foreign_key: :observer_id
+  has_many :observations, dependent: :nullify, foreign_key: :subject_id
 
   has_many :sent_invitations, class_name: "Invitation", foreign_key: "sender_id"
   belongs_to :invitation

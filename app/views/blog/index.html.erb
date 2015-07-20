@@ -12,9 +12,18 @@
 </div>
 <div class="row">
   <div class="col-xs-12 col-sm-3">
-    <form class="search-box">
-      <input id="search-form" class="search-field" placeholder="Search the Blog"></input><button type="button" id="search-button" class="btn btn-lg"><span class="glyphicon glyphicon-search"</button>
-    </form>
+    <div class="row">
+      <div class="col-xs-12">
+        <form class="search-box">
+          <input id="search-form" class="search-field" placeholder="Search the Blog"></input><button type="button" id="search-button" class="btn btn-lg"><span class="glyphicon glyphicon-search"</button>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        
+      </div>
+    </div>
   </div>
   <div class="col-xs-12 col-sm-9">
     <div class="row" id="nav-trigger">
@@ -26,5 +35,7 @@
 </div>
 
 <div>
-  <%= link_to "Create New Post", new_blogpost_path %>
+  <% if is_site_admin?(current_user) %>
+    <%= link_to "Create New Post", new_blogpost_path %>
+  <% end %>
 </div>

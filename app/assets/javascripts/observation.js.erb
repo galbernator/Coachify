@@ -15,7 +15,7 @@ $(document).ready(function() {
     $(this).addClass('selected-subject');
   });
 
-  
+
   $('.eval-button').click(function(e){
     e.preventDefault();
     eval = $(this).attr('id')
@@ -33,5 +33,14 @@ $(document).ready(function() {
   //   $.post('/observations', { observation: {subject_id: subject, evaluation_id: eval}}, submitSuccess);
   // })
 
+  // Observation Show Page Scripts
+  var questionId;
+
+  $('a').click(function() { questionId = parseInt($(this).attr('id')); });
+
+
+  // get the observations for the current user's company as json (to be able to pass info to JS)
+  // save the information in variables to be passed in to the charting functions
+  // call the charting functions to display on the screen when "button" is clicked
 
 });

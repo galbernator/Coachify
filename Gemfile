@@ -18,6 +18,8 @@ gem 'bootstrap-sass'
 gem "animate-rails"
 gem 'smartcropper'
 gem 'chart-js-rails'
+gem 'groupdate'
+gem 'chartkick'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

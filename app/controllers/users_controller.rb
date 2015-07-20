@@ -6,8 +6,7 @@ class UsersController < ApplicationController
 
     def new
       invitation = Invitation.find_by_token(params[:token])
-      # company = invitation.sender.company
-      company = 1
+      company = invitation.sender.company
       @user = User.new(email: invitation.recipient_email)
       @locations = Location.where(company_id: company.id).map { |store| [store.name, store.id] }
     end

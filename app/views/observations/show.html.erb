@@ -1,20 +1,74 @@
 <div class="top-div">
   <div class="row">
-    <div class="col-xs-offset-1 col-xs-10" id="daily-chart">
-      <canvas id="myChart"></canvas>
+    <div class="col-xs-12 col-md-7">
+      <h4>Total Evaluations</h4>
+      <%= column_chart @observations.group_by_day("observations.created_at", format: "%B %d").count %>
+    </div>
+    <div class="col-xs-12 col-md-5">
+      <h4>Completed Observations</h4>
+      <% results = Hash.new(0) %>
+      <% @observations.each do |observation| %>
+        <% percent = observation.responses.length.to_f / 20 %>
+        <% if percent > 0.8 %>
+          <% results["complete"] += 1 %>
+        <% else %>
+          <% results["incomplete"] += 1 %>
+        <% end %>
+      <% end %>
+      <%= pie_chart(results) %>
     </div>
   </div>
 </div>
 <div>
   <% @observations.each do |observation| %>
-    <div>
-      <%= observation.created_at %>
-      <% observation.responses.each do |response| %>
-        <div>
-          <%= response.question.text %> - <%= response.answer.answer %>
-        </div>
-      <% end %>
+    <button data-toggle="collapse" data-target="#observation-<%= observation.id %>" aria-expanded="false" aria-controls="observation-<%= observation.id %>">
+      <span class="glyphicon glyphicon-triangle-right"></span>
+      <%= observation.created_at.strftime("%B %d") %> - <%= observation.subject.full_name %> (<%= observation.subject.location.name %>)
+    </button>
+      <div class="collapse" id="observation-<%= observation.id %>">
+        <% question_number = 1 %>
+        <table>
+          <tbody>
+            <% observation.responses.each do |response| %>
+              <tr>
+                <td>
+                  <!-- break down each question into the number of times that each answer was given -->
+                  <%= question_number %>. <%= response.question.text %>
+                  <span data-toggle="modal" data-target="#myModal">See answer breakdown</span>
+                </td>
+                <td>
+                  <%= response.answer.answer %> |
+                  <a id="<%= response.question.id %>-question" data-toggle="modal" data-target="#myModal">See answer breakdown</a>
+                  <% @answers =  %>
+                  <% @observation.each do |observation| %>
+
+                  <% end %>
+                </td>
+                <% question_number += 1 %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
     <hr>
   <% end %>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <%= pie_chart @observation.responses.questio.group(:).count %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>

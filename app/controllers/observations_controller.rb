@@ -23,6 +23,7 @@ class ObservationsController < ApplicationController
   end
 
   def show
+    Observation.joins(:users => :company).where(company_id: current_user.id)
     @observations  = current_user.company.observations
   end
 end

@@ -1,3 +1,73 @@
 // Place all the styles related to the tour controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#tour-background {
+  background: url(asset_path('crane2.jpg')) no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#tour-title {
+  font-size: 5.2em;
+  text-align: center;
+  padding-top: 98px;
+  color: #fff;
+}
+
+.CTA-button-tour {
+  font-size: 1.4em;
+  padding: 20px 30px;
+  border: 2px solid #fff;
+  border-radius: 50px;
+  color: #fff;
+  line-height: 28px;
+  background-color: transparent;
+  transition: all 0.3s;
+  margin-top: 55px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.CTA-button-tour:hover {
+  font-size: 1.4em;
+  padding: 20px 30px;
+  border: 2px solid #ff8300;
+  border-radius: 50px;
+  color: #fff;
+  line-height: 28px;
+  background-color: #ff8300;
+  margin-top: 55px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.one-third-image {
+  display: inline-block;
+  width: 100%;
+  height: auto;
+  max-width: 350px;
+  -ms-interpolation: bicubit;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.center {
+  text-align: center;
+}
+
+.tour-image {
+  width: 100%;
+  height: auto;
+  max-width: 500px;
+  -ms-interpolation: bicubit;
+}
+
+.tour-text {
+  font-size: 1.35em;
+  line-height: 35px;
+  color: #333;
+  margin: 45px auto;
+  text-align: center;
+}
