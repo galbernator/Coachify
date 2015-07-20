@@ -42,3 +42,25 @@
   -webkit-animation-delay: 0s;
           animation-delay: 0s;
 }
+
+.finished-response {
+  text-align: center;
+  border: 2px solid #ff8300;
+  border-radius: 6px;
+  background-color: #333;
+  padding: 45px;
+  p {
+    color: #fff;
+    font-size: 1.35em;
+    line-height: 35px;
+  }
+  h2 {
+    font-size: 4.3em;
+    color: #ff8300;
+  }
+}
+
+#finished-button {
+  margin: 35px auto;
+  text-align: center;
+}

@@ -19,7 +19,7 @@ $(document).ready(function() {
         // Button to close the modal window appears that let them know that the observation is complete
         var list = $('.answer-list')
         var finishedButton =
-          '<div class="row"><div class="col-xs-12 col-sm-offset-3 col-sm-6"><div id="thanks"><h2>Thank You!</h2><p>This observation is now complete. To start a new observation, just close this window and then click "Start an Observation"</div><button id="close-modal">Click to Finish</button></div></div>'
+          '<div class="row"><div class="col-xs-12 col-sm-offset-3 col-sm-6"><div id="thanks" class="finished-response"><h2>Thank You!</h2><div><p>This observation is now complete and has been saved.</p></div><a href="/"><button class="CTA-button-white" id="finished-button">Return Home</button></a></div>'
         list.append(finishedButton);
 
       } else {

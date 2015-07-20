@@ -21,15 +21,15 @@
 </div>
 <div>
   <% @observations.each do |observation| %>
-    <button data-toggle="collapse" data-target="#observation-<%= observation.id %>" aria-expanded="false" aria-controls="observation-<%= observation.id %>">
-      <span class="glyphicon glyphicon-triangle-right"></span>
+    <button class="observation-list-button" data-toggle="collapse" data-target="#observation-<%= observation.id %>" aria-expanded="false" aria-controls="observation-<%= observation.id %>">
+      </span>
       <%= observation.created_at.strftime("%B %d") %> - <%= observation.subject.full_name %> (<%= observation.subject.location.name %>)
     </button>
       <div class="collapse" id="observation-<%= observation.id %>">
         <% question_number = 1 %>
         <table>
           <tbody>
-            <% observation.responses.each do |response| %>
+            <% observation.responses.reverse.each do |response| %>
               <tr>
                 <td>
                   <!-- break down each question into the number of times that each answer was given -->
@@ -39,10 +39,10 @@
                 <td>
                   <%= response.answer.answer %> |
                   <a id="<%= response.question.id %>-question" data-toggle="modal" data-target="#myModal">See answer breakdown</a>
-                  <% @answers =  %>
-                  <% @observation.each do |observation| %>
+                  <%#  %>
+                  <%# @observation.each do |observation| %>
 
-                  <% end %>
+                  <%# end %>
                 </td>
                 <% question_number += 1 %>
               </tr>
@@ -63,7 +63,7 @@
         <h4 class="modal-title" id="myModalLabel">Modal title</h4>
       </div>
       <div class="modal-body">
-        <%= pie_chart @observation.responses.questio.group(:).count %>
+        <%# pie_chart @observation.responses.questio.group(:).count %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #tour-background {
-  background: url(asset_path('crane2.jpg')) no-repeat;
+  background: url(asset_path('crane3.jpg')) no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -12,12 +12,12 @@
 #tour-title {
   font-size: 5.2em;
   text-align: center;
-  padding-top: 98px;
-  color: #fff;
+  padding-top: 118px;
+  color: #ff8300;
 }
 
 .CTA-button-tour {
-  font-size: 1.4em;
+  font-size: 1.8em;
   padding: 20px 30px;
   border: 2px solid #fff;
   border-radius: 50px;
@@ -30,7 +30,7 @@
   text-align: center;
 }
 .CTA-button-tour:hover {
-  font-size: 1.4em;
+  font-size: 1.8em;
   padding: 20px 30px;
   border: 2px solid #ff8300;
   border-radius: 50px;
@@ -70,4 +70,16 @@
   color: #333;
   margin: 45px auto;
   text-align: center;
+}
+.tour-text-white {
+  font-size: 1.35em;
+  line-height: 35px;
+  color: #333;
+  margin: 45px auto;
+  text-align: center;
+  color: #fff;
+}
+
+.dark-background {
+  background-color: #333;
 }
