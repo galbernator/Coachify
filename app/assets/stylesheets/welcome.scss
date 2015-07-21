@@ -11,16 +11,32 @@
     background-size: cover;
   }
 
-  #main-title {
+  #main-title-lg {
     font-size: 6.3em;
     text-align: center;
     padding-top: 78px;
     color: #ff8300;
   }
 
-  .subheader {
+  #main-title-sm {
+    font-size: 4.3em;
+    text-align: center;
+    padding-top: 78px;
+    color: #ff8300;
+  }
+
+  .subheader-lg {
     margin: 25px auto;
     font-size: 2.4em;
+    color: #fff;
+    line-height: 36px;
+    text-align: center;
+    padding: 5px 30px;
+  }
+
+  .subheader-sm {
+    margin: 17px auto;
+    font-size: 1.6em;
     color: #fff;
     line-height: 36px;
     text-align: center;
