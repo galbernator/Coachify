@@ -15,6 +15,10 @@ Rails.application.routes.draw do
     resources :responses, only: [:new, :create]
   end
 
+  resources :questions, shallow: true do
+    resources :breakdowns, only: [:index]
+  end
+
   resources :observations, only: [:new, :create, :show] do
   end
 

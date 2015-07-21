@@ -34,9 +34,12 @@ $(document).ready(function() {
   // })
 
   // Observation Show Page Scripts
-  var questionId;
+  var questionText;
 
-  $('a').click(function() { questionId = parseInt($(this).attr('id')); });
+  $('a').click(function() {
+    questionText = $(this).attr('data-question-text');
+    $('#myModalLabel').html(questionText);
+   });
 
 
   // get the observations for the current user's company as json (to be able to pass info to JS)
@@ -44,3 +47,8 @@ $(document).ready(function() {
   // call the charting functions to display on the screen when "button" is clicked
 
 });
+
+$('button[data-dismiss="modal"]').on('hidden.bs.modal', function () {
+  $('#breakdown-chart').html("");
+  $('#myModalLabel').html("");
+})

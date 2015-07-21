@@ -18,29 +18,6 @@
       <%= pie_chart(results) %>
     </div>
   </div>
-  <div class="row">
-    <div class="col-xs-12">
-      <!-- start a new hash called questions outside of the loop -->
-      <% questions = Hash.new %>
-      <!-- get all of the questions that are in the evaluation -->
-      <% eval = @observations.first.evaluation_id %>
-      <% eval_questions = Question.where(evaluation_id: eval) %>
-      <!-- loop over each of the questions and get the question text -->
-      <% eval_questions.each do |question| %>
-        <div>
-          <!-- instanciate a variable called answers to hold all of the answer options for the specific question -->
-          <% answers = Hash.new(0) %>
-          <!-- loop through the answer possibilities and add them to answers -->
-          <% question.answers.each do |answer| %>
-            <% answers[answer.id] +=0 %>
-          <% end %>
-          <!-- add the hash of answers to the hash of questions by the question id -->
-          <% questions[question.id] = answers %>
-        </div>
-      <% end %>
-      <%= questions %>
-    </div>
-  </div>
 </div>
 <div>
   <!-- loop over each of the observations from the company -->
@@ -62,7 +39,7 @@
                 </td>
                 <td>
                   <%= response.answer.answer %> |
-                  <%= link_to "See answer breakdown", question_breakdowns_path(response.question), remote: true, id: "<%= response.question.id %>-question" data-toggle: "modal" data-target: "#myModal" %>
+                  <%= link_to "See answer breakdown", question_breakdowns_path(response.question), remote: true, "data-toggle" => "modal", "data-target" => "#breakdownModal", "data-question-text" => "#{response.question.text}" %>
 
                 <!-- put modal code here -->
 
@@ -81,19 +58,18 @@
   <% end %>
 </div>
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="breakdownModal" tabindex="-1" role="dialog" aria-labelledby="breakdownModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel"></h4>
       </div>
-      <div class="modal-body">
-        <%# pie_chart @observation.responses.questio.group(:).count %>
+      <div class="modal-body" id="breakdown-chart">
+          <!-- pie chart rendered here -->
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
