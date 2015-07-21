@@ -11,7 +11,7 @@
         <div class="row">
           <% if question.kind == "Scale 1-10" %>
             <% question.answers.each do |answer| %>
-              <div class="scale-answer col-xs-2" id="<%= question.id %>">
+              <div class="scale-answer col-xs-12 col-sm-2" id="<%= question.id %>">
                 <button class="answer-button" id="<%= answer.id %>"
                     data-url="<%= evaluation_path(@evaluation) %>"><%= answer.answer %>
                 </button>
@@ -20,19 +20,19 @@
           <% elsif question.kind == "Grade" %>
           <div class="col-xs-offset-1"></div>
             <% question.answers.each do |answer| %>
-              <div class="grade-answer col-xs-2" id="<%= question.id %>">
+              <div class="grade-answer col-xs-12 col-sm-2" id="<%= question.id %>">
                 <button class="answer-button" id="<%= answer.id %>" data-url="<%= evaluation_path(@evaluation) %>"><%= answer.answer %></button>
               </div>
             <% end %>
           <% elsif question.kind == "True of False" || question.kind == "Yes or No" %>
             <% question.answers.each do |answer| %>
-              <div class="scale-answer col-xs-4" id="<%= question.id %>">
+              <div class="scale-answer col-xs-12 col-sm-4" id="<%= question.id %>">
                 <button class="answer-button" id="<%= answer.id %>" data-url="<%= evaluation_path(@evaluation) %>"><%= answer.answer %></button>
               </div>
             <% end %>
           <% else %>
             <% question.answers.each do |answer| %>
-              <div class="other-answer col-xs-6" id="<%= question.id %>">
+              <div class="other-answer col-xs-12 col-sm-6" id="<%= question.id %>">
                 <button class="answer-button" id="<%= answer.id %>" data-url="<%= evaluation_path(@evaluation) %>"><%= answer.answer %></button>
               </div>
             <% end %>

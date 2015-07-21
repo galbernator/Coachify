@@ -13,7 +13,7 @@
         <% if employee.avatar.present? %>
           <%= image_tag employee.avatar.url, class: "user-avatar" %>
         <% else %>
-          <%= image_tag default_avatag.png %>
+          <%= image_tag 'default_avatar.png' %>
         <% end %>
         <p class="employee-name"><%= employee.full_name %></p>
       </button>
