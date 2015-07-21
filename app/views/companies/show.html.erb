@@ -1,11 +1,11 @@
-<div class="top-div">
-  <div>
+<div class="top-div row">
+  <div class="col-xs-12">
     <%= @company.name %>
   </div>
-  <div>
+  <div class="col-xs-12 col-sm-2">
     <%= render "/invitations/form" %>
   </div>
-  <div>
+  <div class="col-xs-12 col-sm-10">
     <% @company.districts.each do |district| %>
       <%= link_to district.name, company_district_path(district.company, district) %>
     <% end %>

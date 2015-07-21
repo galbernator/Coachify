@@ -18,9 +18,34 @@
       <%= pie_chart(results) %>
     </div>
   </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- start a new hash called questions outside of the loop -->
+      <% questions = Hash.new %>
+      <!-- get all of the questions that are in the evaluation -->
+      <% eval = @observations.first.evaluation_id %>
+      <% eval_questions = Question.where(evaluation_id: eval) %>
+      <!-- loop over each of the questions and get the question text -->
+      <% eval_questions.each do |question| %>
+        <div>
+          <!-- instanciate a variable called answers to hold all of the answer options for the specific question -->
+          <% answers = Hash.new(0) %>
+          <!-- loop through the answer possibilities and add them to answers -->
+          <% question.answers.each do |answer| %>
+            <% answers[answer.id] +=0 %>
+          <% end %>
+          <!-- add the hash of answers to the hash of questions by the question id -->
+          <% questions[question.id] = answers %>
+        </div>
+      <% end %>
+      <%= questions %>
+    </div>
+  </div>
 </div>
 <div>
+  <!-- loop over each of the observations from the company -->
   <% @observations.each do |observation| %>
+    <!-- create a 'button' to enable the drop down menu with the date and name of employee observed -->
     <button class="observation-list-button" data-toggle="collapse" data-target="#observation-<%= observation.id %>" aria-expanded="false" aria-controls="observation-<%= observation.id %>">
       </span>
       <%= observation.created_at.strftime("%B %d") %> - <%= observation.subject.full_name %> (<%= observation.subject.location.name %>)
@@ -34,15 +59,16 @@
                 <td>
                   <!-- break down each question into the number of times that each answer was given -->
                   <%= question_number %>. <%= response.question.text %>
-                  <span data-toggle="modal" data-target="#myModal">See answer breakdown</span>
                 </td>
                 <td>
                   <%= response.answer.answer %> |
-                  <a id="<%= response.question.id %>-question" data-toggle="modal" data-target="#myModal">See answer breakdown</a>
-                  <%#  %>
-                  <%# @observation.each do |observation| %>
+                  <%= link_to "See answer breakdown", question_breakdowns_path(response.question), remote: true, id: "<%= response.question.id %>-question" data-toggle: "modal" data-target: "#myModal" %>
 
-                  <%# end %>
+                <!-- put modal code here -->
+
+
+
+
                 </td>
                 <% question_number += 1 %>
               </tr>

@@ -1,4 +1,8 @@
-<%= simple_form_for([@blogpost, @comment],remote: true, html: {class: "form-horizontal"}) do |f| %>
-  <%= f.input :body %>
-  <%= f.submit "Add Comment" %>
-<% end %>
+<div class="col-xs-offset-1 col-xs-8 comment-container">
+  <%= simple_form_for([@blogpost, @comment],remote: true, html: {class: "form-horizontal"}) do |f| %>
+    <%= f.input_field :body, class: "comment-field" %>
+</div>
+<div class="col-xs-2">
+    <%= f.submit "Add Comment", class: "comment-button" %>
+  <% end %>
+</div>

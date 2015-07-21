@@ -5,8 +5,8 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-xs-12">
-    <%= image_tag @blogpost.image.url, class: "blog-header-image" %>
+  <div class="col-xs-12 center-block">
+    <%= image_tag @blogpost.image.url, class: "img-responsive" %>
   </div>
   <div class="col-xs-12">
     <pre>
@@ -15,12 +15,14 @@
   </div>
 
   <!-- add commnet to the current blogpost -->
-  <div>
-    <%= render "comments/form" %>
+  <div class="row">
+    <div class="col-xs-offset-1 col-xs-10">
+      <%= render "comments/form" %>
+    </div>
   </div>
 
   <!-- display the comments for the current post -->
-  <div id="comments">
+  <div id="comments" class="row comment-form">
     <% @comments.each do |comment| %>
       <%= render "comments/comment", comment: comment %>
     <% end %>

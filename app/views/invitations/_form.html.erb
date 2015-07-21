@@ -3,6 +3,6 @@
   <% roles = user_role == 1 || user_role == 2 ?
       Role.where("id >= ?", user_role) : Role.where("id > ?", user_role) %>
   <%= f.input :recipient_email, input_html: {label: "Recipient's Email Address"} %>
-  <%= f.collection_select :role_id, roles, :id, :position, html: {class: "form-control"} %>
+  <%= f.collection_select :role_id, roles, :id, :position %>
   <%= f.submit "Send Invitation" %>
 <% end %>

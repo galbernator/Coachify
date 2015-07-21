@@ -259,7 +259,10 @@
 
   .user-avatar {
     border: 2px solid #333;
-    height: 250px;
+    width: 100%;
+    height: auto;
+    max-width: 250px;
+
   }
 
   .subject-button {

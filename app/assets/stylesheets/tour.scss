@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #tour-background {
-  background: url(asset_path('crane3.jpg')) no-repeat;
+  background: url(asset_path('crane3.jpg')) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -10,7 +10,7 @@
 }
 
 #tour-title {
-  font-size: 5.2em;
+  font-size: 5.6em;
   text-align: center;
   padding-top: 118px;
   color: #ff8300;
@@ -48,8 +48,7 @@
   height: auto;
   max-width: 350px;
   -ms-interpolation: bicubit;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
   text-align: center;
 }
 
@@ -62,6 +61,7 @@
   height: auto;
   max-width: 500px;
   -ms-interpolation: bicubit;
+  margin: 0 auto;
 }
 
 .tour-text {
@@ -82,4 +82,5 @@
 
 .dark-background {
   background-color: #333;
+  padding: 20px 0;
 }

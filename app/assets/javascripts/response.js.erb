@@ -19,7 +19,7 @@ $(document).ready(function() {
         // Button to close the modal window appears that let them know that the observation is complete
         var list = $('.answer-list')
         var finishedButton =
-          '<div class="row"><div class="col-xs-12 col-sm-offset-3 col-sm-6"><div id="thanks" class="finished-response"><h2>Thank You!</h2><div><p>This observation is now complete and has been saved.</p></div><a href="/"><button class="CTA-button-white" id="finished-button">Return Home</button></a></div>'
+          '<div class="row return-home"><div class="col-xs-12 col-sm-offset-3 col-sm-6"><div id="thanks" class="finished-response"><h2>Thank You!</h2><div><p>This observation is now complete and has been saved.</p></div><a href="/"><button class="CTA-button-white" id="finished-button">Return Home</button></a></div>'
         list.append(finishedButton);
 
       } else {
@@ -74,7 +74,10 @@ $(document).ready(function() {
   });
 
 
-
+// adding form-control class to invitation
+$('#invitation_role_id').addClass('form-control');
+// adding form-control class to location
+$('#user_location_id').addClass('form-control pad-bottom');
 
 
 

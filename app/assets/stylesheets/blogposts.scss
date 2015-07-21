@@ -9,3 +9,28 @@
   align-content: center;
   margin: 5px auto;
 }
+
+.comment-container {
+  border: 1px solid #999;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.comment-field {
+  width: 100%;
+  border-right: 1px solid #999;
+  height: 40px;
+  border-width: 0px;
+  margin: 25px 0;
+}
+
+.comment-button {
+  margin: 25px 0px;
+  height: 40px;
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+.comment-form {
+  margin-bottom: 20px;
+}

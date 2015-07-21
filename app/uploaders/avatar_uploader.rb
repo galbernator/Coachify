@@ -41,7 +41,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   version :avatar do
-    process :smart_crop_and_scale => [250, 250]
+    process smart_crop_and_scale: [250, 250]
   end
 
   # Create different versions of your uploaded files:

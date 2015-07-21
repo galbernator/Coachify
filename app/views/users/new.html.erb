@@ -1,13 +1,15 @@
-<div class="top-div">
-  <%= simple_form_for(@user, html: { class: 'form-horizontal' }) do |f| %>
-    <%= hidden_field_tag :token, params[:token] %>
-    <%= f.input :first_name %>
-    <%= f.input :last_name %>
-    <%= f.input :email %>
-    <%= f.select :location_id, options_for_select(@locations) %>
-    <%= f.input :avatar %>
-    <%= f.input :password %>
-    <%= f.input :confirm_password %>
-    <%= f.submit %>
-  <% end %>
+<div class="row top-div">
+  <div class="col-xs-offset-1 col-xs-10 col-sm-offset-3 col-sm-6">
+    <%= simple_form_for(@user, html: { class: 'form-horizontal' }) do |f| %>
+      <%= hidden_field_tag :token, params[:token] %>
+      <%= f.input :first_name %>
+      <%= f.input :last_name %>
+      <%= f.input :email %>
+      <%= f.select :location_id, options_for_select(@locations) %>
+      <%= f.input :avatar %>
+      <%= f.input :password %>
+      <%= f.input :confirm_password %>
+      <%= f.submit %>
+    <% end %>
+  </div>
 </div>
