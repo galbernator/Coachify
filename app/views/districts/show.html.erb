@@ -37,7 +37,7 @@
             <%= f.select :state, options_for_select(@states) %>
             <%= f.input :zip_code %>
             <%= f.input :phone_number %>
-            <%= f.input :district_id, :input_html => { :value => @district.id } %>
+            <%= f.input :district_id, :as => :hidden, :input_html => { :value => @district.id } %>
         </div>
       </div>
       <div class="modal-footer">

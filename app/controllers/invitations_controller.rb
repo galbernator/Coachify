@@ -5,7 +5,7 @@ class InvitationsController < ApplicationController
   end
 
   def create
-    invitation_params = params.require(:invitation).permit([:recipient_email, :role_id, :token])
+    invitation_params = params.require(:invitation).permit([:recipient_email, :role_id, :token, :company_id])
     @invitation = Invitation.new(invitation_params)
     @invitation.sender = current_user
     company = @invitation.sender.company
@@ -13,7 +13,6 @@ class InvitationsController < ApplicationController
       InvitationMailer.user_invitation(@invitation, signup_url(@invitation.token)).deliver
       redirect_to (:back), message: "Invitation sent"
     else
-      debugger
       redirect_to (:back), alert: "Invitation not sent"
     end
   end

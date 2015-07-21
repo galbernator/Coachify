@@ -5,6 +5,7 @@ class Invitation < ActiveRecord::Base
   belongs_to :sender, class_name: "User", foreign_key: :sender_id
   has_one :recipient, class_name: "User"
   belongs_to :role
+  belongs_to :company
 
   validates :recipient_email, presence: true
   validate :recipient_is_not_registered

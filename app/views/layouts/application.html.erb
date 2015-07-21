@@ -51,7 +51,8 @@
                 <% if is_site_admin?(current_user) %>
                   <li><%= link_to "See All Companies", company_path(current_user.company) %></li>
                   <li><%= link_to current_user.company.name, company_path(current_user.company) %></li>
-                <% elsif is_admin?(current_user) %>
+                  <% debugger %>
+                <% elsif is_company_admin?(current_user) %>
                   <li><%= link_to "#{current_user.company.name} Dashboard" %></li>
                   <li><%= link_to "Admin Panel", company_path(current_user.company) %></li>
                   <li><%= link_to "Locations", company_locations_path(current_user.company) %></li>

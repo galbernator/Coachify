@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150714215343) do
+ActiveRecord::Schema.define(version: 20150721194319) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,8 +98,10 @@ ActiveRecord::Schema.define(version: 20150714215343) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "role_id"
+    t.integer  "company_id"
   end
 
+  add_index "invitations", ["company_id"], name: "index_invitations_on_company_id", using: :btree
   add_index "invitations", ["role_id"], name: "index_invitations_on_role_id", using: :btree
   add_index "invitations", ["sender_id"], name: "index_invitations_on_sender_id", using: :btree
 
@@ -191,6 +193,7 @@ ActiveRecord::Schema.define(version: 20150714215343) do
   add_foreign_key "districts", "companies"
   add_foreign_key "evaluations", "companies"
   add_foreign_key "instances", "evaluations"
+  add_foreign_key "invitations", "companies"
   add_foreign_key "invitations", "roles"
   add_foreign_key "locations", "companies"
   add_foreign_key "locations", "districts"

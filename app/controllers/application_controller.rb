@@ -30,11 +30,11 @@ class ApplicationController < ActionController::Base
 
   helper_method :is_company_admin?
 
-  def is_district_manger?(user)
+  def is_district_manager?(user)
     user.role_id == 4 || current_user.role_id == 5
   end
 
-  helper_method :is_district_manger?
+  helper_method :is_district_manager?
 
   def is_store_manager?(user)
     user.role_id == 6

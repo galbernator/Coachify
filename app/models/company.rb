@@ -4,6 +4,7 @@ class Company < ActiveRecord::Base
   has_many :evaluations, dependent: :nullify
   has_many :users, dependent: :nullify
   has_many :districts, dependent: :nullify
+  has_many :invitations, dependent: :nullify
 
   has_many :observations, through: :users
 

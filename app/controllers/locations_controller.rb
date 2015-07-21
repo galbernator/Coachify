@@ -3,7 +3,7 @@ class LocationsController < ApplicationController
   def create
     district = District.find_by_id(params[:location][:district_id].to_i)
     @location = Location.new(location_params)
-    @location.company = current_user.company
+    @location.company = district.company
     if @location.save
       redirect_to (:back)
     else
