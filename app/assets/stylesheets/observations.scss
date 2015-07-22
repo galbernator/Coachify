@@ -13,3 +13,54 @@
   font-size: 1.3em;
   color: #333;
 }
+
+.eval-button {
+  padding: 15px 15px;
+  border: 2px solid #999;
+  border-radius: 40px;
+  font-size: 1.5em;
+  color: #999;
+  background-color: transparent;
+  margin: 15px auto;
+  text-align: center;
+  width: 90%;
+}
+.eval-button:hover {
+  padding: 15px 15px;
+  border: 2px solid #fff;
+  border-radius: 40px;
+  font-size: 1.5em;
+  color: #fff;
+  background-color: #ff8300;
+  margin: 15px auto;
+  text-align: center;
+  width: 90%;
+}
+
+.next-button {
+  padding: 15px 15px;
+  border: 2px solid #333;
+  border-radius: 10px;
+  font-size: 1.75em;
+  color: #333;
+  margin: 15px auto;
+  text-align: center;
+  width: 60%;
+  background-color: transparent;
+}
+
+.next-button:hover {
+  padding: 15px 15px;
+  border: 2px solid #ff8300;
+  border-radius: 10px;
+  font-size: 1.75em;
+  color: #fff;
+  margin: 15px auto;
+  text-align: center;
+  width: 60%;
+  background-color: #ff8300;
+}
+
+.slide-div {
+  margin: 250px auto;
+}

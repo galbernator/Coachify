@@ -1,41 +1,51 @@
 <%= form_tag "/observations" do %>
-
-<div class="top-div row">
+<div class="top-div row" id="employee-select">
   <div class="col-xs-12">
-    <h1 class="center">Who AreYou Evaluating?</h1>
+    <div class="row">
+      <div class="col-xs-12">
+        <h1 class="center page-headline-sm">Who AreYou Evaluating?</h1>
+      </div>
+    </div>
+    <div class="row">
+      <% current_user.location.users.each do |employee| %>
+        <% if employee != current_user %>
+        <div class="col-xs-6 col-sm-4 col-md-3">
+          <button class="subject-button" id="<%= employee.id %>">
+            <% if employee.avatar.present? %>
+              <%= image_tag employee.avatar.url, class: "user-avatar" %>
+            <% else %>
+              <%= image_tag 'default_avatar.png', class: "user-avatar" %>
+            <% end %>
+            <p class="employee-name"><%= employee.full_name %></p>
+          </button>
+        </div>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
-<div class="row">
-  <% current_user.location.users.each do |employee| %>
-    <% if employee != current_user %>
-    <div class="col-xs-6 col-sm-4 col-md-3">
-      <button class="subject-button" id="<%= employee.id %>">
-        <% if employee.avatar.present? %>
-          <%= image_tag employee.avatar.url, class: "user-avatar" %>
-        <% else %>
-          <%= image_tag 'default_avatar.png' %>
-        <% end %>
-        <p class="employee-name"><%= employee.full_name %></p>
-      </button>
+<div class="top-div row" id="evaluation-select">
+  <div class="col-xs-12">
+    <div>
+      <h2 class="center page-headline-sm">Which evaluation</h2>
     </div>
-    <% end %>
-  <% end %>
+    <div>
+        <ul class="answer-list">
+          <% current_user.company.evaluations.each do |eval|  %>
+            <li>
+              <button class="eval-button center-block" id="<%= eval.id %>"><%= eval.title %></button>
+            </li>
+          <% end %>
+        </ul>
+    </div>
+  </div>
 </div>
-<div>
-  <h2>Which evaluation</h2>
+<div class="slide-div row" id="continue-select">
+  <div class="col-xs-12">
+    <!-- { observation: {subject_id: subject, evaluation_id: eval} -->
+    <input type="hidden" id="subject-id" name="observation[subject_id]" />
+    <input type="hidden" id="evaluation-id" name="observation[evaluation_id]" />
+    <button id="start-observation" class="next-button center-block">CONTINUE</button>
+  </div>
 </div>
-<div>
-    <ul class="answer-list">
-      <% current_user.company.evaluations.each do |eval|  %>
-        <li>
-          <button class="eval-button" id="<%= eval.id %>"><%= eval.title %></button>
-        </li>
-      <% end %>
-    </ul>
-</div>
-<!-- { observation: {subject_id: subject, evaluation_id: eval} -->
-<input type="hidden" id="subject-id" name="observation[subject_id]" />
-<input type="hidden" id="evaluation-id" name="observation[evaluation_id]" />
-<button id="start-observation">NEXT</button>
-
 <% end %>

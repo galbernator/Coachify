@@ -73,4 +73,9 @@ if ($('#nav-trigger').length === 0 ) {
     })
   }
 
+  // remove Bootstrap button outline
+  $('button').click(function(){
+    $(this).blur();
+  })
+
 });
