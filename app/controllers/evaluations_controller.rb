@@ -19,7 +19,7 @@ class EvaluationsController < ApplicationController
     @evaluation = Evaluation.new(evaluation_params)
     @evaluation.company = current_user.company
     if @evaluation.save(evaluation_params)
-      redirect_to evaluation_questions_path(@evaluation)
+      redirect_to evaluation_path(@evaluation)
     else
       render :new
     end

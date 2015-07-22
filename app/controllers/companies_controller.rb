@@ -30,7 +30,7 @@ class CompaniesController < ApplicationController
   end
 
   def show
-    @evaluation = Evaluation.new
+    @evaluations = Evaluation.where(company: @company)
     @invitation = Invitation.new
   end
 

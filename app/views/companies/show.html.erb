@@ -1,31 +1,37 @@
-<div class="top-div row">
+<div class="top-div row company-header">
+  <div class="col-xs-12 ">
+    <h1><%= @company.name %></h1>
+  </div>
   <div class="col-xs-12">
-    <%= @company.name %>
+    <%= link_to "Edit Company Info", edit_companies_path(@company) %>
+    <% if is_site_admin?(current_user) %>
+      <%= link_to " | Delete Company", company_path(@company), method: :delete, data: {confirm: "Are you sure you want to delete this company from the database?"} %>
+    <% end %>
   </div>
-  <div class="col-xs-12 col-sm-2">
-    <%= render "/invitations/form" %>
+</div>
+<div class="row" data-no-turbolink>
+  <div class="col-xs-12 col-sm-6 col-md-3">
+    <h3>Invite Employees</h3>
+    <div class="center-block invite">
+      <%= render "/invitations/form" %>
+    </div>
   </div>
-  <div class="col-xs-12 col-sm-10">
+  <div class="col-xs-12 col-sm-6 col-md-3">
+    <h3>Districts</h3>
     <% @company.districts.each do |district| %>
       <%= link_to district.name, company_district_path(district.company, district) %>
     <% end %>
+    <div><%= link_to "Add District", new_company_district_path(@company) %></div>
   </div>
-  <div>
-    <%= link_to "Observations", observation_path %>
+  <div class="col-xs-12 col-sm-6 col-md-3">
+    <h3>Evaluations</h3>
+    <% @evaluations.each do |eval| %>
+      <%= link_to eval.title, evaluation_path(eval) %>
+    <% end %>
+    <div><%= link_to "Create New Evaluation", evaluations_path %></div>
   </div>
-  <div>
-    <%= link_to "Add a District", new_company_district_path(@company) %>
-  </div>
-  <div>
-    <%= link_to "Evaluation Surveys", evaluations_path %>
-  </div>
-  <div>
-    <%= link_to "Create New Evaluation", evaluations_path %>
-  </div>
-  <div>
-    <%= link_to "Edit Company Info", edit_companies_path(@company) %>
-  </div>
-  <div>
-    <%= link_to "Delete Company", company_path(@company), method: :delete, data: {confirm: "Are you sure you want to delete this company from the database?"} %>
+  <div class="col-xs-12 col-sm-6 col-md-3">
+    <h3>Observations</h3>
+    <div><%= link_to "Go to Observations", observation_path %></div>
   </div>
 </div>

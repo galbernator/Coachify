@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).on('ready page:load', function(event) {
 
   // $('#nav-button-sm-screen a').click(function(event){
   //   event.preventDefault();
@@ -13,13 +13,14 @@ $(document).ready(function() {
   hamburger.click(function() {
     $('html').toggleClass('menu-dropped');
   })
-if ($('#nav-trigger').length === 0 ) {
-    $('#brand img').attr('src', '<%= image_url("logo-white.png") %>');
-    $('#navbar').toggleClass('color-change');
-    $('#nav-button').toggleClass('white-text');
-    $('#nav-button-sm-screen a #nav-button').toggleClass('white-text');
-    $('.navbar-header #hamburger .icon-bar').toggleClass('color-change');
-  } else {
+
+  if ($('#nav-trigger').length === 0 ) {
+      $('#brand img').attr('src', '<%= image_url("logo-white.png") %>');
+      $('#navbar').toggleClass('color-change');
+      $('#nav-button').toggleClass('white-text');
+      $('#nav-button-sm-screen a #nav-button').toggleClass('white-text');
+      $('.navbar-header #hamburger .icon-bar').toggleClass('color-change');
+    } else {
     var navLinks = new Waypoint({
     element: document.getElementById('nav-trigger'),
     handler: function() {

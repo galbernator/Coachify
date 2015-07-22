@@ -372,3 +372,25 @@
 .btn:focus {
   outline: none;
 }
+
+.change-form {
+  margin-bottom: 10px;
+}
+
+.form-width {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.submit-button {
+  border-color: #ff8300;
+  color: #ff8300;
+  max-width: 500px;
+}
+
+.submit-button:hover {
+  border-color: #ff8300;
+  background-color: #ff8300;
+  color: #fff;
+  max-width: 500px;
+}

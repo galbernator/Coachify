@@ -3,7 +3,7 @@
 </div>
 <div class="row">
   <div class="col-xs-12 col-sm-2">
-    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+    <button type="button" id="add-location-buton" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
       ADD LOCATION
     </button>
     <div>
@@ -29,20 +29,19 @@
         <h4 class="modal-title" id="myModalLabel">Add a Location</h4>
       </div>
       <div class="modal-body">
-        <div>
+        <div class="modal-form">
           <%= simple_form_for([@district.company, @location], html: {class: "form-horizontal"}) do |f| %>
-            <%= f.input :name, label: "Location Name" %>
-            <%= f.input :address %>
-            <%= f.input :city %>
-            <%= f.select :state, options_for_select(@states) %>
-            <%= f.input :zip_code %>
-            <%= f.input :phone_number %>
+            <%= f.input :name, label: "Location Name", class: "skinny" %>
+            <%= f.input :address, class: "skinny" %>
+            <%= f.input :city, class: "skinny" %>
+            <%= f.select :state, options_for_select(@states), class: "form-control" %>
+            <%= f.input :zip_code, class: "skinny" %>
+            <%= f.input :phone_number, class: "skinny" %>
             <%= f.input :district_id, :as => :hidden, :input_html => { :value => @district.id } %>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <%= f.submit "Add Location", class: "btn btn-primary" %>
+      <div class="modal-footer modal-form">
+        <%= f.submit "Add Location", class: "form-control submit-button", "data-dismiss": "modal" %>
           <% end %>
       </div>
     </div>

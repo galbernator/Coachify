@@ -1,25 +1,29 @@
-<div class="top-div">
-  <div class="row">
-    <div class="col-xs-12 col-md-7">
-      <h4>Total Evaluations</h4>
-      <%= column_chart @observations.group_by_day("observations.created_at", format: "%B %d").count %>
-    </div>
-    <div class="col-xs-12 col-md-5">
-      <h4>Completed Observations</h4>
-      <% results = Hash.new(0) %>
-      <% @observations.each do |observation| %>
-        <% percent = observation.responses.length.to_f / 20 %>
-        <% if percent > 0.8 %>
-          <% results["complete"] += 1 %>
-        <% else %>
-          <% results["incomplete"] += 1 %>
-        <% end %>
+<div class="top-div row company-header">
+  <div class="col-xs-12 ">
+    <h1><%= current_user.company.name %></h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-md-7 chart-holder">
+    <h3 class="center">Total Evaluations</h3>
+    <%= column_chart @observations.group_by_day("observations.created_at", format: "%B %d").count%>
+  </div>
+  <div class="col-xs-12 col-md-5 chart-holder">
+    <h3 class="center">Completed Observations</h3>
+    <% results = Hash.new(0) %>
+    <% @observations.each do |observation| %>
+      <% percent = observation.responses.length.to_f / 20 %>
+      <% if percent > 0.8 %>
+        <% results["complete"] += 1 %>
+      <% else %>
+        <% results["incomplete"] += 1 %>
       <% end %>
-      <%= pie_chart(results) %>
-    </div>
+    <% end %>
+    <%= pie_chart(results) %>
   </div>
 </div>
 <div>
+  <h3 class="center underline">Individual Observations</h3>
   <!-- loop over each of the observations from the company -->
   <% @observations.each do |observation| %>
     <!-- create a 'button' to enable the drop down menu with the date and name of employee observed -->

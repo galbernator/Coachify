@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).on('ready page:load', function(event) {
 
   //get the value of the dropdown menu of question type
     var sel = $('#question_kind');

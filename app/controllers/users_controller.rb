@@ -19,6 +19,7 @@ class UsersController < ApplicationController
         @user.invitation = invitation
         @user.role = invitation.role
         @user.company = invitation.company
+        invitation.company.present? ? @user.company = invitation.company : @user.company = invitation.sender.company
         if @user.save
           session[:user_id] = @user.id
           redirect_to root_path

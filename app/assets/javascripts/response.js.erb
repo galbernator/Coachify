@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).on('ready page:load', function(event) {
 
 
     // this will be the action to close the modal once the survey is completed
@@ -75,11 +75,14 @@ $(document).ready(function() {
 
 
 // adding form-control class to invitation
-$('#invitation_role_id').addClass('form-control');
+$('#invitation_role_id').addClass('form-control change-form');
+$('#invitation_company_id').addClass('form-control change-form');
 // adding form-control class to location
 $('#user_location_id').addClass('form-control pad-bottom');
 
-
+$('#add-location-buton').click(function(){
+  $('#location_state').addClass('form-control change-form');
+});
 
 
 

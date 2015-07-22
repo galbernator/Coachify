@@ -2,10 +2,10 @@
   <% user_role = current_user.role.id %>
   <% roles = user_role == 1 || user_role == 2 ?
       Role.where("id >= ?", user_role) : Role.where("id > ?", user_role) %>
-  <%= f.input :recipient_email, input_html: {label: "Recipient's Email Address"} %>
+  <%= f.input :recipient_email, input_html: {label: "Recipient's Email Address", class: "form-width"} %>
   <% if user_role == 1 %>
     <%= f.collection_select :company_id, Company.all, :id, :name,:include_blank => true %>
   <% end %>
   <%= f.collection_select :role_id, roles, :id, :position %>
-  <%= f.submit "Send Invitation" %>
+  <%= f.submit "Send Invitation", class: "form-control submit-button" %>
 <% end %>

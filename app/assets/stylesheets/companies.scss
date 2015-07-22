@@ -1,3 +1,20 @@
 // Place all the styles related to the companies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.company-header {
+  background-color: #ff8300;
+}
+
+.company-header h1 {
+  color: #fff;
+}
+.company-header a {
+  position: relative;
+    top: -10px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.invite {
+  width: 90%;
+}
