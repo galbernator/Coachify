@@ -47,7 +47,7 @@
                 <span class="caret"></span>
                 </a>
 
-              <ul class="dropdown-menu">
+              <ul class="dropdown-menu" data-no-turbolink>
                 <% if is_site_admin?(current_user) %>
                   <li><%= link_to "See All Companies", company_path(current_user.company) %></li>
                   <li><%= link_to current_user.company.name, company_path(current_user.company) %></li>

@@ -12,8 +12,8 @@
     <h3 class="center">Completed Observations</h3>
     <% results = Hash.new(0) %>
     <% @observations.each do |observation| %>
-      <% percent = observation.responses.length.to_f / 20 %>
-      <% if percent > 0.8 %>
+      <% percent = observation.responses.length.to_f / @observations.count %>
+      <% if percent > 0.7 %>
         <% results["complete"] += 1 %>
       <% else %>
         <% results["incomplete"] += 1 %>
