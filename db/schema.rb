@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150721194319) do
+ActiveRecord::Schema.define(version: 20150731042338) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,16 @@ ActiveRecord::Schema.define(version: 20150721194319) do
 
   add_index "districts", ["company_id"], name: "index_districts_on_company_id", using: :btree
 
+  create_table "employees", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "location_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "employees", ["location_id"], name: "index_employees_on_location_id", using: :btree
+
   create_table "evaluations", force: :cascade do |t|
     t.integer  "company_id"
     t.string   "title"
@@ -133,9 +143,13 @@ ActiveRecord::Schema.define(version: 20150721194319) do
     t.integer  "observer_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "location_id"
+    t.integer  "employee_id"
   end
 
+  add_index "observations", ["employee_id"], name: "index_observations_on_employee_id", using: :btree
   add_index "observations", ["evaluation_id"], name: "index_observations_on_evaluation_id", using: :btree
+  add_index "observations", ["location_id"], name: "index_observations_on_location_id", using: :btree
 
   create_table "questions", force: :cascade do |t|
     t.datetime "created_at",    null: false
@@ -191,13 +205,16 @@ ActiveRecord::Schema.define(version: 20150721194319) do
   add_foreign_key "comments", "blogposts"
   add_foreign_key "comments", "users"
   add_foreign_key "districts", "companies"
+  add_foreign_key "employees", "locations"
   add_foreign_key "evaluations", "companies"
   add_foreign_key "instances", "evaluations"
   add_foreign_key "invitations", "companies"
   add_foreign_key "invitations", "roles"
   add_foreign_key "locations", "companies"
   add_foreign_key "locations", "districts"
+  add_foreign_key "observations", "employees"
   add_foreign_key "observations", "evaluations"
+  add_foreign_key "observations", "locations"
   add_foreign_key "questions", "evaluations"
   add_foreign_key "responses", "answers"
   add_foreign_key "responses", "evaluations"

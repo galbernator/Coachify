@@ -6,16 +6,25 @@
   <h3>Store Manager</h3>
   <% @users.each do |user| %>
     <div>
-      <% if user.is_manager %>
+      <% if is_store_manager?(user) %>
         <%= user.full_name %>
       <% end %>
     </div>
   <% end %>
 </div>
+<% if current_user.role.id == "4" %>
+  <div>
+    <%= simple_form_for(Employee.new, html: {class: "form-horizontal"}) do |f| %>
+      <%= f.input :first_name %>
+      <%= f.input :first_name %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+<% end %>
 <div>
   <h3>Store Employees</h3>
   <% @users.each do |user| %>
-    <% if user.is_manager == nil %>
+    <% if user.role.id != 6 %>
       <div>
         <%= user.full_name %>
       </div>

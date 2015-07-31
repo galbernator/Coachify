@@ -2,12 +2,21 @@ $(document).on('ready page:load', function(event) {
 
   console.log("Observations.js!!!")
 
+  var location
   var subject
   var eval
 
+  var locationButton = $('.location-button')
   var employeeButton = $('.subject-button')
+  var evaluationButton = $('.eval-button')
 
   //Dispable the default action when selecting an employee for an observation
+  locationButton.click(function(e){
+    e.preventDefault();
+    location = $(this).attr('id')
+    $('#location-id').val(location);
+  });
+
   employeeButton.click(function(e){
     e.preventDefault();
     employeeButton.removeClass('selected-subject')
@@ -17,7 +26,7 @@ $(document).on('ready page:load', function(event) {
   });
 
 
-  $('.eval-button').click(function(e){
+  evaluationButton.click(function(e){
     e.preventDefault();
     eval = $(this).attr('id')
     $('#evaluation-id').val(eval);
@@ -51,10 +60,18 @@ $(document).on('ready page:load', function(event) {
     $('#myModalLabel').html("");
   })
 
+  $('#employee-select').hide();
   $('#evaluation-select').hide();
   $('#continue-select').hide();
 
-  $('#employee-select').click(function(){
+  $('#location-select').click(function(e){
+    e.preventDefault();
+    $('#store-select').addClass('animated bounceOutUp').hide();
+    $('#employee-select').show().addClass('animated bounceInUp');
+  })
+
+  $('#subject-select').click(function(e){
+    e.preventDefault();
     $('#employee-select').addClass('animated bounceOutUp').hide();
     $('#evaluation-select').show().addClass('animated bounceInUp');
   })

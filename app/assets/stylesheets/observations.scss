@@ -14,6 +14,29 @@
   color: #333;
 }
 
+.location-button {
+  padding: 15px 15px;
+  border: 2px solid #999;
+  border-radius: 40px;
+  font-size: 1.5em;
+  color: #999;
+  background-color: transparent;
+  margin: 15px auto;
+  text-align: center;
+  width: 90%;
+}
+.location-button:hover {
+  padding: 15px 15px;
+  border: 2px solid #fff;
+  border-radius: 40px;
+  font-size: 1.5em;
+  color: #fff;
+  background-color: #ff8300;
+  margin: 15px auto;
+  text-align: center;
+  width: 90%;
+}
+
 .eval-button {
   padding: 15px 15px;
   border: 2px solid #999;
@@ -75,4 +98,12 @@
 
 .underline {
   border-bottom: 1px solid #999;
+}
+
+.subject-submit {
+  padding: 15px;
+  border: 2px solid #333;
+  border-radius: 5px;
+  background-color: #fefefe;
+  margin: 5px auto;
 }

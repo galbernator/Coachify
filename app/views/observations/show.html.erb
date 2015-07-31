@@ -4,10 +4,12 @@
   </div>
 </div>
 <div class="row">
+  <!-- total evaluations by day -->
   <div class="col-xs-12 col-md-7 chart-holder">
     <h3 class="center">Total Evaluations</h3>
     <%= column_chart @observations.group_by_day("observations.created_at", format: "%B %d").count%>
   </div>
+  <!-- percentage complete surveys -->
   <div class="col-xs-12 col-md-5 chart-holder">
     <h3 class="center">Completed Observations</h3>
     <% results = Hash.new(0) %>
@@ -22,11 +24,12 @@
     <%= pie_chart(results) %>
   </div>
 </div>
+<!-- list of each evaluation -->
 <div>
   <h3 class="center underline">Individual Observations</h3>
-  <!-- loop over each of the observations from the company -->
+   <%# loop over each of the observations from the company %>
   <% @observations.each do |observation| %>
-    <!-- create a 'button' to enable the drop down menu with the date and name of employee observed -->
+    <%# create a 'button' to enable the drop down menu with the date and name of employee observed %>
     <button class="observation-list-button" data-toggle="collapse" data-target="#observation-<%= observation.id %>" aria-expanded="false" aria-controls="observation-<%= observation.id %>">
       </span>
       <%= observation.created_at.strftime("%B %d") %> - <%= observation.subject.full_name %> (<%= observation.subject.location.name %>)
@@ -38,15 +41,12 @@
             <% observation.responses.reverse.each do |response| %>
               <tr>
                 <td>
-                  <!-- break down each question into the number of times that each answer was given -->
+                  <%# break down each question into the number of times that each answer was given  %>
                   <%= question_number %>. <%= response.question.text %>
                 </td>
                 <td>
                   <%= response.answer.answer %> |
                   <%= link_to "See answer breakdown", question_breakdowns_path(response.question), remote: true, "data-toggle" => "modal", "data-target" => "#breakdownModal", "data-question-text" => "#{response.question.text}" %>
-
-                <!-- put modal code here -->
-
                 </td>
                 <% question_number += 1 %>
               </tr>
@@ -67,7 +67,7 @@
         <h4 class="modal-title" id="myModalLabel"></h4>
       </div>
       <div class="modal-body" id="breakdown-chart">
-          <!-- pie chart rendered here -->
+          <%# pie chart rendered here %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -1,11 +1,41 @@
 <%= form_tag "/observations" do %>
-<div class="top-div row" id="employee-select">
+<div class="top-div row" >
   <div class="col-xs-12">
-    <div class="row">
-      <div class="col-xs-12">
-        <h1 class="center page-headline-sm">Who AreYou Evaluating?</h1>
+    <% if current_user.role.id == 1 %>
+    <div class="top-div" id="store-select">
+      <div class="row">
+        <div class="col-xs-12">
+          <h1 class="center page-headline-sm">Choose a Location</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-xs-offset-1 col-xs-10 col-sm-offset-3 col-sm-6">
+          <ul class="answer-list">
+            <% current_user.location.district.locations.each do |location| %>
+              <li>
+                <button class="location-button center-block" id="<%= location.id %>"><%= location.name %></button>
+              </li>
+            <% end %>
+            <input type="hidden" id="location-id" name="observation[location_id]" />
+          </ul>
+          <button id="location-select" class="form-control">NEXT</button>
+        </div>
       </div>
     </div>
+    <div class="top-div" id="employee-select">
+      <div class="row">
+        <div class="col-xs-12">
+          <h1 class="center page-headline-sm">Who AreYou Evaluating?</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-xs-offset-1 col-xs-10 col-sm-offset-3 col-sm-6">
+          <%= text_field_tag :subject_id, "", class: "form-control", autofocus: true %>
+          <button id="subject-select" class="form-control">NEXT</button>
+        </div>
+      </div>
+    </div>
+    <% else %>
     <div class="row">
       <% current_user.location.users.each do |employee| %>
         <% if employee != current_user %>
@@ -21,7 +51,9 @@
         </div>
         <% end %>
       <% end %>
+      <input type="hidden" id="subject-id" name="observation[subject_id]" />
     </div>
+    <% end %>
   </div>
 </div>
 <div class="top-div row" id="evaluation-select">
@@ -43,7 +75,6 @@
 <div class="slide-div row" id="continue-select">
   <div class="col-xs-12">
     <!-- { observation: {subject_id: subject, evaluation_id: eval} -->
-    <input type="hidden" id="subject-id" name="observation[subject_id]" />
     <input type="hidden" id="evaluation-id" name="observation[evaluation_id]" />
     <button id="start-observation" class="next-button center-block">CONTINUE</button>
   </div>
