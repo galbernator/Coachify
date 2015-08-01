@@ -16,6 +16,9 @@ $(document).on('ready page:load', function(event) {
     e.preventDefault();
     location = $(this).attr('id')
     $('#location-id').val(location);
+    $(this).addClass('selected-subject');
+    $('#store-select').addClass('animated bounceOutUp').hide();
+    $('#employee-select').show().addClass('animated bounceInUp');
   });
 
   subjectButton.click(function(e){
