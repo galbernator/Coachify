@@ -4,6 +4,7 @@ class EmployeesController < ApplicationController
     employee_params = params.require(:employee).permit(:first_name, :last_name, :location_id)
     @employee = Employee.new(employee_params)
     @employee.location = location
+    @employee.district = location.district
     if @employee.save
       redirect_to company_location_path(location.company, location)
     else

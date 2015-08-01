@@ -7,7 +7,8 @@ $(document).on('ready page:load', function(event) {
   var eval
 
   var locationButton = $('.location-button')
-  var employeeButton = $('.subject-button')
+  var subjectButton = $('.subject-button')
+  var employeeButton = $('#employee-button')
   var evaluationButton = $('.eval-button')
 
   //Dispable the default action when selecting an employee for an observation
@@ -17,11 +18,17 @@ $(document).on('ready page:load', function(event) {
     $('#location-id').val(location);
   });
 
-  employeeButton.click(function(e){
+  subjectButton.click(function(e){
     e.preventDefault();
-    employeeButton.removeClass('selected-subject')
     subject = $(this).attr('id')
     $('#subject-id').val(subject);
+    $(this).addClass('selected-subject');
+  });
+
+  employeeButton.click(function(e){
+    e.preventDefault();
+    employee = $('select').find('option:selected').attr('id')
+    $('#employee-id').val(employee);
     $(this).addClass('selected-subject');
   });
 
@@ -68,6 +75,12 @@ $(document).on('ready page:load', function(event) {
     e.preventDefault();
     $('#store-select').addClass('animated bounceOutUp').hide();
     $('#employee-select').show().addClass('animated bounceInUp');
+  })
+
+  $('#employee-button').click(function(e){
+    e.preventDefault();
+    $('#employee-select').addClass('animated bounceOutUp').hide();
+    $('#evaluation-select').show().addClass('animated bounceInUp');
   })
 
   $('#subject-select').click(function(e){

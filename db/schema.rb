@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150731042338) do
+ActiveRecord::Schema.define(version: 20150801025833) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,8 +79,10 @@ ActiveRecord::Schema.define(version: 20150731042338) do
     t.integer  "location_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "district_id"
   end
 
+  add_index "employees", ["district_id"], name: "index_employees_on_district_id", using: :btree
   add_index "employees", ["location_id"], name: "index_employees_on_location_id", using: :btree
 
   create_table "evaluations", force: :cascade do |t|
@@ -205,6 +207,7 @@ ActiveRecord::Schema.define(version: 20150731042338) do
   add_foreign_key "comments", "blogposts"
   add_foreign_key "comments", "users"
   add_foreign_key "districts", "companies"
+  add_foreign_key "employees", "districts"
   add_foreign_key "employees", "locations"
   add_foreign_key "evaluations", "companies"
   add_foreign_key "instances", "evaluations"

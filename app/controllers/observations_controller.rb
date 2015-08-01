@@ -5,6 +5,7 @@ class ObservationsController < ApplicationController
   def new
     @observation = Observation.new
     @evaluations = current_user.company.evaluations
+    @employees = Employee.where(district_id: current_user.location.district)
   end
 
   def create
