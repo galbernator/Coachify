@@ -4,7 +4,7 @@
 </div>
 <div>
   <h3>Store Manager</h3>
-  <% @users.each do |user| %>
+  <% @location.users.each do |user| %>
     <div>
       <% if is_store_manager?(user) %>
         <%= user.full_name %>
@@ -12,22 +12,26 @@
     </div>
   <% end %>
 </div>
-<% if current_user.role.id == "4" %>
   <div>
     <%= simple_form_for(Employee.new, html: {class: "form-horizontal"}) do |f| %>
       <%= f.input :first_name %>
-      <%= f.input :first_name %>
+      <%= f.input :last_name %>
+      <%= f.input :location_id, :as => :hidden, :input_html => { :value => @location.id } %>
       <%= f.submit %>
     <% end %>
   </div>
-<% end %>
 <div>
   <h3>Store Employees</h3>
-  <% @users.each do |user| %>
+  <% @location.users.each do |user| %>
     <% if user.role.id != 6 %>
       <div>
         <%= user.full_name %>
       </div>
     <% end %>
+  <% end %>
+  <% @location.employees.each do |employee| %>
+      <div>
+        <%= employee.full_name %>
+      </div>
   <% end %>
 </div>

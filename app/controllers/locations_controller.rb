@@ -13,7 +13,6 @@ class LocationsController < ApplicationController
 
   def show
     @location = Location.find params[:id]
-    @users = User.where(location_id: @location.id)
   end
 
   def edit
