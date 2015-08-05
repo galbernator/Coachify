@@ -24,26 +24,44 @@ class ApplicationController < ActionController::Base
 
   helper_method :is_site_admin?
 
+  def is_owner?(user)
+    user.role_id == 2
+  end
+
+  helper_method :is_owner?
+
   def is_company_admin?(user)
-    user.role_id == 2 || current_user.role_id == 3
+    current_user.role_id == 3
   end
 
   helper_method :is_company_admin?
 
+  def is_regional_manager?(user)
+    user.role_id == 4
+  end
+
+  helper_method :is_regional_manager?
+
+  def is_account_executive?(user)
+    user.role_id == 5
+  end
+
+  helper_method :is_account_executive?
+
   def is_district_manager?(user)
-    user.role_id == 4 || current_user.role_id == 5
+    user.role_id == 6
   end
 
   helper_method :is_district_manager?
 
   def is_store_manager?(user)
-    user.role_id == 6
+    user.role_id == 7
   end
 
   helper_method :is_store_manager?
 
   def is_employee?(user)
-    user.role_id == 7
+    user.role_id == 8
   end
 
   helper_method :is_employee?
