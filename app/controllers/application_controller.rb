@@ -19,49 +19,49 @@ class ApplicationController < ActionController::Base
 
 
   def is_site_admin?(user)
-    user.role_id == 1
+    user.role.position == "Site Admin"
   end
 
   helper_method :is_site_admin?
 
   def is_owner?(user)
-    user.role_id == 2
+    user.role.position == "Owner"
   end
 
   helper_method :is_owner?
 
   def is_company_admin?(user)
-    current_user.role_id == 3
+    user.role.position == "Company Admin"
   end
 
   helper_method :is_company_admin?
 
   def is_regional_manager?(user)
-    user.role_id == 4
+    user.role.position == "Regional Manager"
   end
 
   helper_method :is_regional_manager?
 
   def is_account_executive?(user)
-    user.role_id == 5
+    user.role.position == "Account Executive"
   end
 
   helper_method :is_account_executive?
 
   def is_district_manager?(user)
-    user.role_id == 6
+    user.role.position == "District Manager"
   end
 
   helper_method :is_district_manager?
 
   def is_store_manager?(user)
-    user.role_id == 7
+    user.role.position == "Store Manager"
   end
 
   helper_method :is_store_manager?
 
   def is_employee?(user)
-    user.role_id == 8
+    user.role.position == "Employee"
   end
 
   helper_method :is_employee?
