@@ -19,13 +19,13 @@ class ApplicationController < ActionController::Base
 
 
   def is_site_admin?(user)
-    user.role.position == "Site Admin"
+    user.role.id == 24
   end
 
   helper_method :is_site_admin?
 
   def is_owner?(user)
-    user.role.position == "Owner"
+    user.role.id == 25
   end
 
   helper_method :is_owner?
