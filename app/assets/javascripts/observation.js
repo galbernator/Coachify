@@ -92,6 +92,12 @@ $(document).on('ready page:load', function(event) {
     $('#evaluation-select').show().addClass('animated bounceInUp');
   })
 
+  $('.subject-button').click(function(e){
+    e.preventDefault();
+    $('#direct-employee-select').addClass('animated bounceOutUp').hide();
+    $('#evaluation-select').show().addClass('animated bounceInUp');
+  })
+
   $('#evaluation-select').click(function(){
     $('#evaluation-select').addClass('animated bounceOutUp').hide();
     $('#continue-select').show().addClass('animated bounceInUp');
