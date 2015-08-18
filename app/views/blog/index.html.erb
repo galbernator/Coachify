@@ -35,7 +35,7 @@
 </div>
 
 <div>
-  <% if is_site_admin?(current_user) %>
+  <% if is_site_admin? %>
     <%= link_to "Create New Post", new_blogpost_path %>
   <% end %>
 </div>

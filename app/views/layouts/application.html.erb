@@ -48,18 +48,18 @@
                 </a>
 
               <ul class="dropdown-menu" data-no-turbolink>
-                <% if is_site_admin?(current_user) %>
+                <% if is_site_admin? %>
                   <li><%= link_to "See All Companies", company_path(current_user.company) %></li>
                   <li><%= link_to current_user.company.name, company_path(current_user.company) %></li>
-                <% elsif is_company_admin?(current_user) %>
+                <% elsif is_company_admin? %>
                   <li><%= link_to "#{current_user.company.name} Dashboard" %></li>
                   <li><%= link_to "Admin Panel", company_path(current_user.company) %></li>
                   <li><%= link_to "Locations", company_locations_path(current_user.company) %></li>
-                <% elsif is_district_manager?(current_user) %>
+                <% elsif is_district_manager? %>
                   <li><%= link_to "District Dashboard" %></li>
                   <li><%= link_to "Admin Panel", company_path(current_user.company) %></li>
                   <li><%= link_to "District Locations", company_district_path(current_user.company, current_user.location.district) %></li>
-                <% elsif is_store_manager?(current_user) %>
+                <% elsif is_store_manager? %>
                   <li><%= link_to "Store Dashboard", company_path(current_user.company) %></li>
                 <% else %>
                   <li><%= link_to "My Observations", users_path(current_user) %></li>

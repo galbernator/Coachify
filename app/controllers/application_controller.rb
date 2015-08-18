@@ -18,52 +18,64 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
 
-  def is_site_admin?(user)
-    user.role.position == "Site Admin"
+  def is_site_admin?
+    current_user.role.position == "Site Admin"
   end
 
   helper_method :is_site_admin?
 
-  def is_owner?(user)
-    user.role.position == "Owner"
+  def is_owner?
+    current_user.role.position == "Owner"
   end
 
   helper_method :is_owner?
 
-  def is_company_admin?(user)
-    user.role.position == "Company Admin"
+  def is_company_admin?
+    current_user.role.position == "Company Admin"
   end
 
   helper_method :is_company_admin?
 
-  def is_regional_manager?(user)
-    user.role.position == "Regional Manager"
+  def is_regional_manager?
+    current_user.role.position == "Regional Manager"
   end
 
   helper_method :is_regional_manager?
 
-  def is_account_executive?(user)
-    user.role.position == "Account Executive"
+  def is_account_executive?
+    current_user.role.position == "Account Executive"
   end
 
   helper_method :is_account_executive?
 
-  def is_district_manager?(user)
-    user.role.position == "District Manager"
+  def is_district_manager?
+    current_user.role.position == "District Manager"
   end
 
   helper_method :is_district_manager?
 
-  def is_store_manager?(user)
-    user.role.position == "Store Manager"
+  def is_store_manager?
+    current_user.role.position == "Store Manager"
   end
 
   helper_method :is_store_manager?
 
-  def is_employee?(user)
-    user.role.position == "Employee"
+  def is_employee?
+    current_user.role.position == "Employee"
   end
 
   helper_method :is_employee?
+
+  def is_manager_or_higher?
+    current_user.role.id <= Role.find_by_position("Store Manager").id
+  end
+
+  helper_method :is_manager_or_higher?
+
+  def is_DM_or_higher?
+    current_user.role.id <= Role.find_by_position("District Manager").id
+  end
+
+  helper_method :is_DM_or_higher?
 
 end

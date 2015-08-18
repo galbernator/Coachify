@@ -5,7 +5,7 @@ class CompaniesController < ApplicationController
 
   def index
     company = current_user.company.id
-    if is_site_admin?(current_user)
+    if is_site_admin?
       @companies = Company.all
     else
       @companies = Company.where(id: company)
