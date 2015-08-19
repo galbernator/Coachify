@@ -1,12 +1,40 @@
 <div class="top-div row company-header">
-  <h1><%= @location.name %></h1>
-  <%= @location.company.name %><br />
-  Manager:
-  <% @location.users.each do |user| %>
-      <% if user.role.position == "Store Manager" %>
-        <%= user.full_name %>
+  <div class="col-xs-12">
+    <h1><%= @location.name %></h1>
+    <%= @location.company.name %><br />
+    Manager:
+    <% @location.users.each do |user| %>
+        <% if user.role.position == "Store Manager" %>
+          <%= user.full_name %>
+        <% end %>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <!-- total evaluations by day -->
+  <div class="col-xs-12 col-md-7 chart-holder">
+    <h3 class="center">Total Evaluations</h3>
+    <%= column_chart @location.observations.group_by_day("observations.created_at", format: "%B %d").count%>
+  </div>
+  <!-- percentage complete surveys -->
+  <div class="col-xs-12 col-md-5 chart-holder">
+    <h3 class="center">Completed Observations</h3>
+    <% results = Hash.new(0) %>
+    <% @location.observations.each do |observation| %>
+      <% if observation.responses.length != 0 %>
+        <% percent = observation.responses.length.to_f / @observations.count %>
+        <% if percent > 0.7 %>
+          <% results["complete"] += 1 %>
+        <% else %>
+          <% results["incomplete"] += 1 %>
+        <% end %>
+      <% else %>
+        <% results = {"incomplete": 1, "complete": 0} %>
       <% end %>
-  <% end %>
+    <% end %>
+    <%= pie_chart(results) %>
+
+  </div>
 </div>
   <% if is_account_executive? %>
     <div>
