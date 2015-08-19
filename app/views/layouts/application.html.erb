@@ -60,7 +60,7 @@
                   <li><%= link_to "Admin Panel", company_path(current_user.company) %></li>
                   <li><%= link_to "District Locations", company_district_path(current_user.company, current_user.location.district) %></li>
                 <% elsif is_store_manager? %>
-                  <li><%= link_to "Store Dashboard", company_path(current_user.company) %></li>
+                  <li><%= link_to "Store Dashboard", company_location_path(current_user.company, current_user.location) %></li>
                 <% else %>
                   <li><%= link_to "My Observations", users_path(current_user) %></li>
                 <% end %>
