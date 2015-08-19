@@ -1,5 +1,6 @@
 class Observation < ActiveRecord::Base
   belongs_to :evaluation
+  belongs_to :location
   has_many :responses, dependent: :nullify
   has_many :answers, dependent: :nullify
   has_many :quesitons, dependent: :destroy

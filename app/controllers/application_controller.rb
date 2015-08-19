@@ -78,4 +78,16 @@ class ApplicationController < ActionController::Base
 
   helper_method :is_DM_or_higher?
 
+  def is_regional_or_higher?
+    current_user.role.id <= Role.find_by_position("Regional Manager").id
+  end
+
+  helper_method :is_regional_or_higher?
+
+  def is_company_admin_or_higher?
+    current_user.role.id <= Role.find_by_position("Company Admin").id
+  end
+
+  helper_method :is_company_admin_or_higher?
+
 end

@@ -1,15 +1,11 @@
-<div class="top-div">
+<div class="top-div row company-header">
   <h1><%= @location.name %></h1>
-  <%= @location.company.name %>
-</div>
-<div>
-  <h3>Store Manager</h3>
+  <%= @location.company.name %><br />
+  Manager:
   <% @location.users.each do |user| %>
-    <div>
       <% if user.role.position == "Store Manager" %>
         <%= user.full_name %>
       <% end %>
-    </div>
   <% end %>
 </div>
   <% if is_account_executive? %>
@@ -38,14 +34,45 @@
   <h3>Store Employees</h3>
   <% @location.users.each do |user| %>
     <% if user.role.position == "Employee" %>
-      <div>
-        <%= user.full_name %>
-      </div>
+      <h4><%= user.full_name %></h4>
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <h5>Total Observations</h5>
+              <%= @location.observations.where("subject_id = ?", user.id).length %>
+            </td>
+            <td>
+              <h5>Observations This Week</h5>
+              <% date = Date.today  %>
+              <%= @location.observations.where("subject_id = ? AND created_at >= ?", user.id, date.at_beginning_of_week).length %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     <% end %>
   <% end %>
   <% @location.employees.each do |employee| %>
-      <div>
-        <%= employee.full_name %>
-      </div>
+    <h4><%= employee.full_name %></h4>
+    <table>
+      <tbody>
+        <tr>
+          <td>
+            <h5>Total Observations</h5>
+            <%= @location.observations.where("employee_id = ?", employee.id).length %>
+          </td>
+          <td>
+            <h5>Observations This Week</h5>
+            <% date = Date.today  %>
+            <%= @location.observations.where("employee_id = ? AND created_at >= ?", employee.id, date.at_beginning_of_week).length %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   <% end %>
+</div>
+<div>
+  <h3>Observations This Week</h3>
+  <% date = Date.today %>
+  <%= @location.observations.where("created_at >= ?", date.at_beginning_of_week).length %>
 </div>

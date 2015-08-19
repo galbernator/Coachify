@@ -16,6 +16,9 @@ class ObservationsController < ApplicationController
                                                     :location_id, :employee_id)
     @observation = Observation.new(observation_params)
     @observation.observer = current_user
+    if @observation.location == nil
+      @observation.location = User.find(params[:observation][:subject_id]).location
+    end
     if @observation.save
       cookies[:observation_id] = { value: @observation.id, :expires => 2.hours.from_now }
       redirect_to new_evaluation_response_path(params[:observation][:evaluation_id].to_i)

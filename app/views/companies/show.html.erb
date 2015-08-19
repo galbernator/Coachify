@@ -32,7 +32,9 @@
     <% @evaluations.each do |eval| %>
       <%= link_to eval.title, evaluation_path(eval) %>
     <% end %>
-    <div><%= link_to "Create New Evaluation", evaluations_path %></div>
+    <% if is_company_admin? || is_owner? %>
+      <div><%= link_to "Create New Evaluation", evaluations_path %></div>
+    <% end %>
   </div>
   <div class="col-xs-12 col-sm-6 col-md-3">
     <h3>Observations</h3>
