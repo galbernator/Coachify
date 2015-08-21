@@ -8,6 +8,28 @@
           <%= user.full_name %>
         <% end %>
     <% end %>
+    <% if is_account_executive? %>
+      <div>
+        <%= simple_form_for(Employee.new, html: {class: "form-horizontal"}) do |f| %>
+          <%= f.input :first_name %>
+          <%= f.input :last_name %>
+          <%= f.input :location_id, :as => :hidden, :input_html => { :value => @location.id } %>
+          <%= f.submit %>
+        <% end %>
+      </div>
+    <% end %>
+    <% if is_manager_or_higher? %>
+    <%= simple_form_for([@location.company, Invitation.new], html: {class: "form-horizontal"}) do |f| %>
+      <% roles = is_site_admin? || is_owner? ?
+          Role.where("id >= ?", current_user.role.id) : Role.where("id > ?", current_user.role.id) %>
+      <%= f.input :recipient_email, input_html: {label: "Recipient's Email Address", class: "form-width"} %>
+      <% if is_site_admin? %>
+        <%= f.collection_select :company_id, Company.all, :id, :name,:include_blank => true %>
+      <% end %>
+      <%= f.collection_select :role_id, roles, :id, :position %>
+      <%= f.submit "Send Invitation", class: "form-control submit-button" %>
+    <% end %>
+    <% end %>
   </div>
 </div>
 <div class="row">
@@ -36,28 +58,6 @@
 
   </div>
 </div>
-  <% if is_account_executive? %>
-    <div>
-      <%= simple_form_for(Employee.new, html: {class: "form-horizontal"}) do |f| %>
-        <%= f.input :first_name %>
-        <%= f.input :last_name %>
-        <%= f.input :location_id, :as => :hidden, :input_html => { :value => @location.id } %>
-        <%= f.submit %>
-      <% end %>
-    </div>
-  <% end %>
-  <% if is_manager_or_higher? %>
-  <%= simple_form_for([@location.company, Invitation.new], html: {class: "form-horizontal"}) do |f| %>
-    <% roles = is_site_admin? || is_owner? ?
-        Role.where("id >= ?", current_user.role.id) : Role.where("id > ?", current_user.role.id) %>
-    <%= f.input :recipient_email, input_html: {label: "Recipient's Email Address", class: "form-width"} %>
-    <% if is_site_admin? %>
-      <%= f.collection_select :company_id, Company.all, :id, :name,:include_blank => true %>
-    <% end %>
-    <%= f.collection_select :role_id, roles, :id, :position %>
-    <%= f.submit "Send Invitation", class: "form-control submit-button" %>
-  <% end %>
-  <% end %>
 <div>
   <h3>Store Employees</h3>
   <% @location.users.each do |user| %>
