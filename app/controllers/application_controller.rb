@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
   helper_method :is_site_admin?
 
   def is_owner?
-    current_user.role.position == "Owner"
+    current_user.role.position == "Company Owner"
   end
 
   helper_method :is_owner?
