@@ -11,24 +11,40 @@
     <% if is_account_executive? %>
       <div>
         <%= simple_form_for(Employee.new, html: {class: "form-horizontal"}) do |f| %>
-          <%= f.input :first_name %>
-          <%= f.input :last_name %>
-          <%= f.input :location_id, :as => :hidden, :input_html => { :value => @location.id } %>
-          <%= f.submit %>
+          <table>
+            <tbody>
+              <tr>
+                <td><%= f.input :first_name %></td>
+                <td><%= f.input :last_name %></td>
+                <%= f.input :location_id, :as => :hidden, :input_html => { :value => @location.id } %>
+                <td><%= f.submit %></td>
+              </tr>
+            </tbody>
+          </table>
         <% end %>
       </div>
     <% end %>
     <% if is_manager_or_higher? %>
-    <%= simple_form_for([@location.company, Invitation.new], html: {class: "form-horizontal"}) do |f| %>
-      <% roles = is_site_admin? || is_owner? ?
-          Role.where("id >= ?", current_user.role.id) : Role.where("id > ?", current_user.role.id) %>
-      <%= f.input :recipient_email, input_html: {label: "Recipient's Email Address", class: "form-width"} %>
-      <% if is_site_admin? %>
-        <%= f.collection_select :company_id, Company.all, :id, :name,:include_blank => true %>
+      <%= simple_form_for([@location.company, Invitation.new], html: {class: "form-horizontal"}) do |f| %>
+        <% roles = is_site_admin? || is_owner? ?
+            Role.where("id >= ?", current_user.role.id) : Role.where("id > ?", current_user.role.id) %>
+        <table>
+          <tbody>
+            <tr>
+              <td><%= f.input :recipient_email, input_html: {label: "Recipient's Email Address", class: "form-width"} %></td>
+              <% if is_site_admin? %>
+                <td><%= f.collection_select :company_id, Company.all, :id, :name,:include_blank => true %></td>
+              <% end %>
+              <td>
+                <%= f.collection_select :role_id, roles, :id, :position %>
+              </td>
+              <td>
+                <%= f.submit "Send Invitation", class: "form-control submit-button" %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       <% end %>
-      <%= f.collection_select :role_id, roles, :id, :position %>
-      <%= f.submit "Send Invitation", class: "form-control submit-button" %>
-    <% end %>
     <% end %>
   </div>
 </div>
