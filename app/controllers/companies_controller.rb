@@ -18,8 +18,7 @@ class CompaniesController < ApplicationController
 
   def create
     @company = Company.new(company_params)
-    nickname = @company.name.split(" ").join('')
-    @company.nickname = nickname
+    @company.nickname = @company.name.split(" ").join('')
     if @company.save
       # send email invite to company lead to sign up for admin account and then
       # directly redirect to fill out the remainder of the company details

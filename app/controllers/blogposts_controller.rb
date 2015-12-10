@@ -12,7 +12,6 @@ class BlogpostsController < ApplicationController
   def create
     @blogpost = Blogpost.new(blogpost_params)
     @blogpost.user = current_user
-    @topics = ["Sales", "Customer Service", "Observation", "Coaching Tips", "Motivation", "Video"]
     if @blogpost.save
       redirect_to blog_index_path, notice: "Post added successfully."
     else
@@ -47,7 +46,7 @@ class BlogpostsController < ApplicationController
 
   private
 
-  def   blogpost_params
+  def blogpost_params
     params.require(:blogpost).permit([:title, :body, :image])
   end
 

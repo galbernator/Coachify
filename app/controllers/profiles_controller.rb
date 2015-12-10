@@ -1,5 +1,4 @@
 class ProfilesController < ApplicationController
-
   before_action :get_user, except: [:new, :create]
 
   def new

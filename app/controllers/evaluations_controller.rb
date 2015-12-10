@@ -1,5 +1,4 @@
 class EvaluationsController < ApplicationController
-
   before_action :find_evaluation, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -28,7 +27,6 @@ class EvaluationsController < ApplicationController
   def show
     @evaluation = Evaluation.find params[:id]
     @question = Question.new
-    @kinds = ['Scale 1-10', 'Grade', 'True or False', 'Multiple Choice', 'Multiple Answer', 'Yes or No', 'Custom']
     2.times { @question.answers.build}
     @questions = Question.where(evaluation_id: @evaluation.id)
   end

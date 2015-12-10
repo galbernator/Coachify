@@ -1,5 +1,7 @@
 class Blogpost < ActiveRecord::Base
 
+  TOPICS = ['Sales', 'CSAT', 'Observing', 'Coaching', 'Motivation', 'Video']
+
   belongs_to :user
 
   mount_uploader :image, ImageUploader

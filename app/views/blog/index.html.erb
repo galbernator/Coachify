@@ -4,7 +4,7 @@
   </div>
 </div>
 <div class="row" id="blog-topics">
-    <% @topics.each do |topic| %>
+    <% Blogpost::TOPICS.each do |topic| %>
       <div class="col-xs-4 col-sm-2 blog-topics">
         <span class="topic"><%= topic %></span>
       </div>
@@ -21,7 +21,7 @@
     </div>
     <div class="row">
       <div class="col-xs-12">
-        
+
       </div>
     </div>
   </div>

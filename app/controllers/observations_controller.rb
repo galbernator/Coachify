@@ -12,8 +12,6 @@ class ObservationsController < ApplicationController
     if cookies[:observation_id]
       cookies[:observation_id] = nil
     end
-    observation_params = params.require(:observation).permit(:subject_id, :evaluation_id,
-                                                    :location_id, :employee_id)
     @observation = Observation.new(observation_params)
     @observation.observer = current_user
     if @observation.location == nil
@@ -30,5 +28,11 @@ class ObservationsController < ApplicationController
   def show
     Observation.joins(:users => :company).where(company_id: current_user.id)
     @observations  = current_user.company.observations
+  end
+
+  private
+
+  def observation_params
+    params.require(:observation).permit(:subject_id, :evaluation_id, :location_id, :employee_id)
   end
 end

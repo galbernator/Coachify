@@ -1,7 +1,7 @@
 class LocationsController < ApplicationController
 
   def create
-    district = District.find_by_id(params[:location][:district_id].to_i)
+    district = District.find_by_id(params[:location][:district_id])
     @location = Location.new(location_params)
     @location.company = district.company
     if @location.save

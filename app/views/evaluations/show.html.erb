@@ -36,7 +36,7 @@
           <%= simple_form_for([@evaluation, @question],
                                     html: {class: "form-horizontal"}) do |f| %>
             <%= f.input :text %>
-            <%= f.input :kind, collection: @kinds %>
+            <%= f.input :kind, collection: Evaluations::EVALUATION_KINDS %>
             <div class="answer-group" id="true-or-false-answers">
               <input type='text' class="form-control answer-field" name='question[answers_attributes][][answer]' value="True" />
               <input type='text' class="form-control answer-field" name='question[answers_attributes][][answer]' value="False" />
